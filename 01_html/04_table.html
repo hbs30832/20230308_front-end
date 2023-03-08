@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML table</title>
+
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>HTML 표 다루기</h1>
+    <!-- 
+        <table> : 테이블의 시작과 끝을 명시
+        <caption> : 표의 제목
+        
+        <tr> : Table Row의 줄임말. 행을 만든다.
+        <th> : Table Header의 줄임말. 데이터의 이름을 나타난다..
+        <td> : Table Data. 각 셀 즉, 실제 값에 해당. 
+     -->
+
+    <table>
+      <caption>
+        성적표
+      </caption>
+      <tr>
+        <th>반</th>
+        <th>이름</th>
+        <th>성적</th>
+      </tr>
+      <tr>
+        <td>A반</td>
+        <td>황보석</td>
+        <td>100점</td>
+      </tr>
+      <tr>
+        <td>B반</td>
+        <td>김민수</td>
+        <td>90점</td>
+      </tr>
+    </table>
+
+    <h3>상품 구성</h3>
+    <table>
+      <caption>
+        선물용과 가정용 상품 구성
+      </caption>
+      <!-- 
+        col, colgroup : n번째 열에 스타일을 지정할 때 사용한다.
+       -->
+      <colgroup>
+        <col style="background-color: #eee" />
+        <col />
+        <col style="width: 150px" />
+        <col style="width: 150px" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>용도</th>
+          <th>중량</th>
+          <th>개수</th>
+          <th>가격</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td rowspan="2">선물용</td>
+          <td>3kg</td>
+          <td>11~16과</td>
+          <td>35,000원</td>
+        </tr>
+        <tr>
+          <td>5kg</td>
+          <td>18~26과</td>
+          <td>52,000원</td>
+        </tr>
+        <tr>
+          <td rowspan="2">가정용</td>
+          <td>3kg</td>
+          <td>11~16과</td>
+          <td>30,000원</td>
+        </tr>
+        <tr>
+          <td>5kg</td>
+          <td>11~16과</td>
+          <td>47,000원</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <caption>
+        요안도라 객실
+      </caption>
+      <thead>
+        <tr>
+          <th>방 이름</th>
+          <th>대상</th>
+          <th>크기</th>
+          <th>가격</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>유채방</td>
+          <td>여성 도미트리</td>
+          <td rowspan="3">4인실</td>
+          <td rowspan="4">1인 20,000원</td>
+        </tr>
+        <tr>
+          <td rowspan="2">동백방</td>
+          <td>동성 도미트리</td>
+        </tr>
+        <tr>
+          <td>가족1팀</td>
+        </tr>
+        <tr>
+          <td>천혜향방</td>
+          <td>-</td>
+          <td>2인실</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">바깥채 전체를 렌트합니다.</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
