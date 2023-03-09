@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS 선택자</title>
+    <style>
+      #big {
+        font-size: 24px;
+      }
+      .red {
+        color: red;
+        font-size: 18px;
+      }
+
+      h1,
+      p {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>아이디(id) 선택자</h1>
+    <p>특정 id값을 가진 요소를 선택한다.</p>
+    <p id="big" class="red">아이디값은 id 속성을 통해서 지정한다.</p>
+    <p>id값은 고유해야한다. 여러개의 요소가 하나의 id값을 가지면 안된다.</p>
+    <p>하나의 요소가 여러개의 id값을 가질 수 없다.</p>
+    <p>우선순위 점수가 100점이다.</p>
+  </body>
+</html>

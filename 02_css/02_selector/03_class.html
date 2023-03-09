@@ -1,0 +1,35 @@
+<!-- 03_class.html -->
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS 선택자</title>
+    <style>
+      .bold {
+        font-weight: bold !important; /* 우선순위 무한대 */
+      }
+
+      .red {
+        color: blue;
+        color: red;
+      }
+
+      p {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>클래스(Class) 선택자</h1>
+    <p class="bold" style="font-weight: lighter">
+      특정 클래스 값을 가진 요소들을 선택한다.
+    </p>
+    <p>클래스는 class 속성을 통해서 지정할 수 있다.</p>
+    <p class="bold">
+      클래스 선택자는 <span class="red">'.클래스명'</span>의 형태로 작성한다.
+    </p>
+    <p>같은 클래스명을 여러 요소들이 가질 수 있다.</p>
+    <p class="bold red">하나의 요소가 여러 클래스명을 가질 수 있다.</p>
+    <p>클래스의 우선순위 점수는 10점이다.</p>
+  </body>
+</html>
