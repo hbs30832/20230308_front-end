@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML form</title>
+  </head>
+  <body>
+    <h1>HTML 사용자 입력받기</h1>
+    <!-- 
+        form : 서버에 사용자의 입력값을 제출할 때 사용한다.
+            => action : 데이터를 처리할 서버 프로그램을 지정한다. 사실상 사용 잘 안한다.
+            => method : 기본값 get. get은 입력값이 주소에 노출된다. post는 노출되지 않는다.
+            => novalidate : 유효성 검증을 하지 않는다. 속성값이 필요없다.
+            => autocomplete : "on" 혹은 "off". 자동완성 여부를 지정한다.
+
+        input : 서버에 전송할 데이터를 사용자로부터 입력받는 태그.
+            => type에 따라서 여러 형태의 데이터를 받는다.
+            => name 속성을 지정해서 데이터를 전송한다. 키(속성이름)=밸류(속성값)의 형태로 전송
+            => required : 필수 입력값을 지정한다. 입력하지 않을시 유효성 검증에 걸린다.
+            => readonly : 값을 읽는 것만 가능하고, 사용자가 변경할 수 없다. 서버에 전송된다.
+            => disabled : 값을 변경하는 것이 불가능하고, 서버에 전송되지 않는다.
+            => placeholder : 입력값에 대한 힌트를 제공한다. 입력이 시작되면 사라진다.
+            => autofocus : 사이트가 로딩될 때에 포커스를 특정 input 태그로 이동시킨다.
+               -> 동시에 여러 태그에 사용시 문서에서 더 상단에 위치한 태그로 이동시킨다.
+
+        label : 특정 글씨나 사진 등을 클릭했을 때 특정 input 태그로 focus를 이동시킨다.
+            => for : 클릭시 포커스를 이동시키고자 하는 input 태그의 id 속성값을 입력한다.
+
+        button : form 태그 내부에 버튼을 통해서 양식을 전송, 초기화 등을 할 수 있다.
+            => type에 따라서 동작이 달라진다.
+            => submit : 기본값. 서버에 데이터 전송. 지정하지 않으면 submit이다.
+            => reset : form 태그안의 input 태그들의 입력값을 지운다.
+            => button : form 태그 내부에 위치해도 아무 동작을 안한다. JS로 별도의 처리를 할 때 사용한다.
+            => form : form 태그 외부에서 동작하게 할 수 있다. 연결하고자 하는 form 태그의 id 속성값을 입력한다.
+     -->
+    <form method="get" autocomplete="on" id="signUp">
+      <ul>
+        <li>
+          <label for="userId">이름</label>
+          <input
+            type="text"
+            name="userId"
+            required
+            id="userId"
+            placeholder="이름을 입력하세요"
+            autofocus
+            maxlength="5"
+          />
+        </li>
+        <li>
+          배송 주소
+          <input type="text" readonly value="인천광역시 중구" name="address" />
+        </li>
+        <li>
+          이메일 <input type="email" disabled value="hbs9312@gmail.com" />
+        </li>
+        <li>
+          <label>
+            연락처
+            <input
+              type="tel"
+              name="tel"
+              placeholder="연락처를 입력해주세요."
+              autofocus
+            />
+          </label>
+        </li>
+        <li>
+          취미
+          <label>
+            <input type="checkbox" name="" id="" value="1" checked />
+            농구
+          </label>
+          <label>
+            <input type="checkbox" name="" id="" />
+            축구
+          </label>
+          <label>
+            <input type="checkbox" name="" id="" />
+            야구
+          </label>
+          <label>
+            <input type="checkbox" name="" id="" />
+            헬스
+          </label>
+        </li>
+        <li>
+          마케팅 수신여부
+
+          <label>
+            <input type="radio" name="marketing" value="true" checked />
+            동의
+          </label>
+          <label>
+            <input type="radio" name="marketing" value="false" />
+            비동의
+          </label>
+        </li>
+        <li>
+          나이
+          <input type="number" max="100" min="0" />
+        </li>
+        <li>
+          가격대
+          <input type="range" step="200" max="1000" />
+        </li>
+        <li>
+          생년월일
+          <input type="date" />
+        </li>
+        <li>
+          프로필 사진
+          <input type="file" name="" id="" accept="image/*" />
+        </li>
+      </ul>
+
+      <button type="submit">등록</button>
+      <button type="button">버튼</button>
+    </form>
+
+    <input type="reset" value="초기화" form="signUp" />
+  </body>
+</html>
