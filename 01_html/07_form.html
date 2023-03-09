@@ -112,6 +112,26 @@
           프로필 사진
           <input type="file" name="" id="" accept="image/*" />
         </li>
+        <li>
+          자기소개
+          <textarea name="" id="" cols="30" rows="4"></textarea>
+        </li>
+        <li>
+          도시
+          <select name="city" id="">
+            <option value="incheon">인천</option>
+            <option value="seoul">서울</option>
+            <option value="gyeonggi-do" selected>경기도</option>
+          </select>
+        </li>
+        <li>
+          동
+          <input type="text" list="dong" />
+          <datalist id="dong">
+            <option value="운서동">Unseo-dong</option>
+            <option value="중산동">Jungsan-dong</option>
+          </datalist>
+        </li>
       </ul>
 
       <button type="submit">등록</button>
