@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS 텍스트</title>
+    <style>
+      :root {
+        font-size: 10px;
+      }
+
+      body {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 10px;
+      }
+
+      p {
+        font-size: 2rem;
+      }
+
+      .italic {
+        font-style: oblique;
+      }
+
+      .weight {
+        font-weight: 700;
+      }
+
+      .color {
+        /* rgb() : 빨간색, 초록색, 파란색 순으로 0~255 사이의 숫자를 지정한다. */
+        color: rgb(0, 255, 168);
+
+        /* rgba() : 네번째 값에 투명도를 0~1의 숫자를 지정한다.*/
+        color: rgba(255, 0, 0, 0.206);
+
+        color: #ff000080; /* 16진법 숫자를 2개씩 이용해서 빨간색, 초록색, 파란색 순으로 지정한다. */
+      }
+
+      .align {
+        text-align: left;
+      }
+
+      .lineHeight {
+        background-color: black;
+        height: 100px;
+        line-height: 100px;
+        color: #fff;
+      }
+
+      .decoration {
+        text-decoration: line-through solid rgba(0, 0, 0, 0.519) 10px;
+        /* text-decoration의 개별속성 */
+        text-decoration-line: line-through;
+        text-decoration-color: red;
+        text-decoration-style: wavy;
+        text-decoration-thickness: 2px;
+      }
+
+      .shadow {
+        text-shadow: -4px -4px 2px rgba(0, 0, 0, 0.4);
+      }
+
+      .transform {
+        text-transform: capitalize;
+      }
+
+      .spacing {
+        letter-spacing: -0.1em;
+        word-spacing: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSS 텍스트 관련 속성</h1>
+
+    <h2>font-family</h2>
+    <p>
+      font-family는 글씨체를 지정한다. <br />
+      글씨체를 여러개를 지정할 수 있는데, 첫번째 폰트가 없으면 두번째, 두번째
+      폰트가 없으면 세번째.. 의 식으로 적용된다. 폰트 이름의 띄어쓰기가 있다면
+      ""사이에 작성한다.
+    </p>
+
+    <h2>font-size</h2>
+    <p>
+      font-size는 글씨의 크기를 지정한다. <br />
+      px, cm, 키워드(예약어)와 같은 절대 크기 혹은 rem, em, %와 같은 상대 크기로
+      지정이 가능하다.
+    </p>
+
+    <h2>font-style</h2>
+    <p class="italic">글씨의 스타일을 변경한다.</p>
+
+    <h2>font-weight</h2>
+    <p class="weight">
+      글씨의 가중도(굵기)를 지정한다. <br />
+      normal, bold와 같은 키워드 혹은 100~900(100단위로) 사이의 숫자를 지정한다.
+      <br />
+      해당 굵기의 폰트를 가지고 있어야 동작한다.
+    </p>
+
+    <h2>color</h2>
+    <p class="color">
+      글씨 색을 지정한다. <br />
+      키워드 혹은 색상코드(Hex, rgb)를 지정한다.
+    </p>
+
+    <h2>text-align</h2>
+    <p class="align" style="line-height: 1.6">
+      text-align은 글자의 정렬방향을 지정한다. <br />
+      인라인 요소(컨텐츠)가 아니라 글씨를 감싸고 있는 블록 요소에 지정해야한다.
+    </p>
+
+    <h2>line-height</h2>
+    <p class="lineHeight">
+      줄의 높이를 지정한다.
+      <!-- 글자가 한줄인 경우 블록의 높이와 line-height를 똑같이 지정하면 세로로
+      가운데로 보낼 수 있다. -->
+    </p>
+
+    <h2>text-decoration</h2>
+    <p class="decoration">글씨에 줄을 긋는다.</p>
+
+    <h2>text-shadow</h2>
+    <p class="shadow">글자에 그림자 효과를 준다.</p>
+
+    <h2>text-transform</h2>
+    <p class="transform">
+      글자를 대문자 혹은 소문자로 변환한다. Lorem ipsum dolor sit amet.
+    </p>
+
+    <h2>letter-spacing / word-spacing</h2>
+    <p class="spacing">
+      letter-spacing 글자간의 간격(자간)을 조절한다. <br />
+      word-spacing은 단어간의 간격을 조절한다. 띄어쓰기가 기준이다.
+    </p>
+  </body>
+</html>
