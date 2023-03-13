@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS float</title>
+    <style>
+      .dog {
+        float: right;
+      }
+
+      .dog02 {
+        float: left;
+      }
+
+      .content {
+        clear: both;
+      }
+
+      .box {
+        width: 100px;
+        height: 100px;
+
+        border: 3px solid black;
+
+        text-align: center;
+        line-height: 100px;
+
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSS float</h1>
+
+    <p>
+      float 속성의 방향을 left, right로 지정하면 요소가 떠있는 상태가 된다.
+      <br />
+      float된 요소 바로 다음 요소는 그 밑에 위치하게 된다. <br />
+      컨텐츠(인라인)들은 위로 올라오는 float되는 것을 허용하지 않는다.
+    </p>
+    <p>
+      clear라는 속성을 통해 float을 해제할 수 있다. <br />
+      float된 요소의 다음 요소에 사용한다.
+    </p>
+    <img src="./assets/dog01.jpg" alt="강아지" class="dog" />
+    <img src="./assets/dog02.jpg" alt="" class="dog02" />
+    <p class="content">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam sed
+      possimus porro expedita sapiente blanditiis facilis quam quos optio iste
+      itaque in illum sequi delectus nisi culpa quas, earum enim, inventore vero
+      atque natus aspernatur fugiat. Assumenda facere officiis provident fugit
+      consectetur id vero eos, impedit enim consequuntur consequatur officia
+      fugiat. Incidunt corrupti dignissimos voluptates odio molestias sunt,
+      quibusdam quos sint delectus? Delectus et voluptas soluta accusantium
+      porro? At commodi, assumenda repellendus sunt minima quia dolorum iste
+      voluptate dicta necessitatibus eaque neque quam, officia, impedit
+      consequatur adipisci? Nobis veritatis recusandae iste magnam, quibusdam
+      dolore id enim explicabo odit, quo fugiat?
+    </p>
+
+    <h2>float 응용</h2>
+    <p>
+      같은 방향으로 float된 요소는 가로 방향으로 나열된다. <br />
+      float된 요소는 inline-block과 비슷하게 동작한다.
+    </p>
+    <div class="box">Box</div>
+    <div class="box">Box</div>
+    <span class="box">Inline</span>
+
+    <p style="clear: both">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus adipisci
+      atque reprehenderit blanditiis quibusdam ratione est facere nam quod a!
+      Consequuntur, sapiente sunt quo nihil odit impedit ipsam earum aspernatur.
+    </p>
+  </body>
+</html>
