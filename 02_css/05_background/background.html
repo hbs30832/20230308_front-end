@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS 배경 지정하기</title>
+    <style>
+      body {
+        height: 3000px;
+      }
+      .container {
+        width: 500px;
+        height: 500px;
+        padding: 20px;
+        border: 10px solid rgba(0, 0, 0, 0.1);
+
+        background-color: yellow;
+        background-clip: border-box;
+        background-image: url("../assets/dog01.jpg");
+        background-repeat: no-repeat;
+        background-position: left center;
+
+        background-size: 200px;
+
+        background-origin: content-box;
+        background-attachment: fixed;
+
+        background: red url("../assets/dog01.jpg") 0 0 / cover no-repeat;
+
+        overflow: scroll; /* 부모 요소를 벗어나는 자식 요소를 처리하는 방법을 지정한다. */
+      }
+
+      .gradient {
+        width: 500px;
+        height: 300px;
+        border: 3px solid black;
+
+        background: linear-gradient(45deg, blue, white 50%, black 75%, red);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSS background</h1>
+
+    <h2>background-color</h2>
+    <p>배경색을 지정한다.</p>
+
+    <h2>background-clip</h2>
+    <p>배경이 지정되는 범위를 설정한다.</p>
+    <ul>
+      <li>border-box(기본값) : border 영역까지 지정된다.</li>
+      <li>padding-box : padding 영역까지 지정된다.</li>
+      <li>content-box : content 영역까지 지정된다.</li>
+    </ul>
+
+    <h2>background-image</h2>
+    <p>
+      이미지를 배경으로 지정한다. <br />
+      url("파일경로") 형식의 값을 사용한다.
+    </p>
+
+    <h2>background-repeat</h2>
+    <p>배경 이미지의 반복 방법을 지정한다.</p>
+    <ul>
+      <li>repeat(기본값) : 가로, 세로방향으로 이미지를 반복한다.</li>
+      <li>repeat-x : 가로(x축)방향으로 이미지를 반복한다.</li>
+      <li>repeat-y : 세로(y축)방향으로 이미지를 반복한다.</li>
+      <li>no-repeat: 반복하지 않는다.</li>
+    </ul>
+
+    <h2>background-position</h2>
+    <p>
+      배경 이미지의 위치를 지정한다. <br />
+      x축, y축 순으로 지정한다. <br />
+      한가지만 지정 시 나머지는 center로 간주한다.
+    </p>
+
+    <h2>background-size</h2>
+    <p>
+      배경 이미지의 크기를 지정한다. <br />
+      x축, y축 순으로 지정한다. <br />
+      한쪽만 지정시 원본 비율에 자동으로 맞춘다.
+    </p>
+    <ul>
+      <li>auto : 원본 이미지의 크기만큼 표시한다.</li>
+      <li>contain : 이미지가 잘리지 않는 범위 내에서 가장 크게 표시한다.</li>
+      <li>cover : 이미지를 자르면서 요소를 가득 채우게 표시한다.</li>
+    </ul>
+
+    <h2>background-origin</h2>
+    <p>배경 이미지가 시작되는 범위를 지정한다.</p>
+
+    <h2>background-attachment</h2>
+    <p>배경 이미지의 첨부 방식을 지정한다.</p>
+    <ul>
+      <li>scroll(기본값) : 스크롤을 해도 배경 이미지가 고정된다.</li>
+      <li>local : 스크롤에 따라 배경 이미지가 함께 움직인다.</li>
+      <li>
+        fixed : 뷰포트를 기준으로 고정된다. 배경 이미지로 지정된 요소를 통해서만
+        보인다.
+      </li>
+    </ul>
+
+    <h2>background</h2>
+    <p>
+      배경관련 속성을 한번에 지정하는 단축속성이다. <br />
+      다른 것은 순서가 상관없지만, position과 size는 /로 구분해서
+      작성해야한다.(position 먼저)
+      <br />
+      단축속성에 size를 포함시키고 싶으면 무조건 앞에 position을 지정해야한다.
+    </p>
+
+    <div class="container">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur at
+      voluptatum sunt facilis voluptate ipsa laudantium amet accusamus nostrum
+      nemo necessitatibus aliquam architecto, enim a temporibus dolore esse, eum
+      in fugit error. Esse perspiciatis expedita possimus eligendi praesentium
+      hic aut cupiditate tempore animi, atque eveniet beatae recusandae nisi
+      suscipit ullam quia non facere consequatur officia reiciendis voluptates
+      libero officiis. Asperiores quae adipisci aperiam facilis! Porro sapiente,
+      iure repellendus nihil cum at molestias iste nemo numquam dolorem libero?
+      Quo ab illum voluptas, nam, provident rerum voluptatibus libero,
+      blanditiis exercitationem placeat nostrum porro est suscipit accusantium
+      molestiae corporis totam dicta temporibus delectus assumenda! Illum,
+      explicabo quas, saepe cumque corporis cupiditate beatae totam nulla sed
+      adipisci molestias voluptatibus quod. Ipsa cumque laudantium unde dolorum
+      officia rem numquam harum corrupti incidunt quos delectus, ut amet quam
+      consequuntur voluptatum maxime velit dignissimos minus maiores culpa alias
+      animi esse. Exercitationem et optio quos officia iusto, distinctio earum
+      inventore, quas alias porro at id laudantium dolore autem in, doloribus
+      sapiente placeat aspernatur. Necessitatibus, optio natus quia aperiam
+      nostrum perspiciatis, reiciendis molestiae adipisci voluptatem
+      consequuntur dicta labore accusantium excepturi earum iusto dolor illo
+      est. Quia ipsum veniam alias ea ut, accusantium a et nihil incidunt
+      laudantium doloribus nam quaerat debitis at iusto impedit minus, dolores
+      id fuga aperiam similique officia tempore! Maiores, repellat quia?
+      Deserunt expedita enim numquam assumenda autem veritatis architecto, ullam
+      aut vero eveniet similique nisi dolorum adipisci blanditiis culpa magni
+      beatae ipsum provident quam fugit. Nulla alias culpa aperiam architecto
+      vitae. Nobis sed sit nam quod dolorum. Quidem, minus asperiores dolorem
+      harum cumque voluptatum aliquam blanditiis iure voluptates fugiat magnam
+      in sapiente autem ipsum aperiam libero non animi maiores tenetur
+      reiciendis accusamus molestias repudiandae, consequatur necessitatibus.
+      Animi repudiandae libero consectetur! Atque unde odio, aperiam et
+      laudantium eos totam consequuntur optio illum maiores sequi aliquid magni!
+    </div>
+
+    <h2>배경색 그라데이션 적용</h2>
+    <div class="gradient"></div>
+  </body>
+</html>
