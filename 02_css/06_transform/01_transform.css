@@ -1,0 +1,68 @@
+.box {
+  width: 100px;
+  height: 100px;
+  border: 3px solid black;
+  text-align: center;
+  line-height: 100px;
+}
+
+/*  box 클래스를 가진 요소 중 첫번째인
+    .box:nth-of-type(1) {
+        margin-top: 0;
+    } 
+*/
+
+/* 첫번째 .box 빼고 적용 가능 */
+.box + .box {
+  margin-top: 50px;
+}
+
+.translate {
+  perspective: 300px;
+}
+
+.translate .box.x:hover {
+  transform: translateX(20px);
+}
+
+.translate .box.y:hover {
+  transform: translateY(30px);
+}
+
+.translate .box.xy:hover {
+  transform: translate(20px, 30px);
+}
+
+.translate .box.z:hover {
+  transform: translateZ(20px);
+}
+
+.scale .box.x:hover {
+  transform: scaleX(2);
+}
+
+.scale .box.y:hover {
+  transform: scaleY(1.2);
+  transform-origin: top;
+}
+
+.scale .box.xy:hover {
+  transform: scale(1.5);
+}
+
+.rotate {
+  perspective: 100px;
+}
+
+.rotate .box.x:hover {
+  transform: rotateX(45deg);
+}
+
+.rotate .box.y:hover {
+  transform: rotateY(45deg);
+  transform-origin: left;
+}
+
+.rotate .box.z:hover {
+  transform: rotateZ(45deg);
+}

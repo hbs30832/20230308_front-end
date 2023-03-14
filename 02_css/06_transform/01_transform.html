@@ -1,0 +1,61 @@
+<!-- 06_transition/01_transition.html -->
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS transform</title>
+    <link rel="stylesheet" href="./01_transform.css" />
+  </head>
+  <body>
+    <h1>CSS transform</h1>
+    <p>
+      요소를 변형시킬 수 있다. <br />
+      transform의 값은 변형 함수를 사용한다.
+    </p>
+
+    <div class="container translate">
+      <h2>translate(이동)</h2>
+      <p>요소를 현재 위치를 기준으로 움직인다.</p>
+      <div class="box x">X</div>
+      <div class="box y">Y</div>
+      <div class="box xy">XY</div>
+      <div class="box z">Z</div>
+    </div>
+
+    <div class="container scale">
+      <h2>scale(크기)</h2>
+      <p>
+        요소의 크기를 변형한다. <br />
+        요소 안의 컨텐츠도 같이 변형된다.
+      </p>
+      <div class="box x">X</div>
+      <div class="box y">Y</div>
+      <div class="box xy">XY</div>
+    </div>
+
+    <div class="container rotate">
+      <h2>rotate(회전)</h2>
+      <p>
+        요소를 회전시킨다. <br />
+        deg(각도) 단위를 사용한다.
+      </p>
+      <div class="box x">X</div>
+      <div class="box y">Y</div>
+      <div class="box z">Z</div>
+    </div>
+
+    <div class="container skew">
+      <h2>skew(왜곡)</h2>
+      <p>
+        요소를 비틀어서 왜곡시킨다. <br />
+        deg(각도) 단위를 사용한다.
+      </p>
+      <div class="box x">X</div>
+      <div class="box y">Y</div>
+      <div class="box z">Z</div>
+    </div>
+
+    <h2>transform-origin</h2>
+    <p>변형이 일어나는 기준 축을 바꿀 수 있다.</p>
+  </body>
+</html>
