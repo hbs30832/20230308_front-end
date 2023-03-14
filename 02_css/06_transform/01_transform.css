@@ -64,5 +64,17 @@
 }
 
 .rotate .box.z:hover {
-  transform: rotateZ(45deg);
+  transform: rotate(45deg);
+}
+
+.skew .box.x:hover {
+  transform: skewX(45deg);
+}
+
+.skew .box.y:hover {
+  transform: skewY(45deg);
+}
+
+.skew .box.xy:hover {
+  transform: skew(45deg, 30deg);
 }

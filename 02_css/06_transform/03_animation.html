@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Animation</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+
+      .box + .box {
+        margin-top: 100px;
+      }
+
+      .box01 {
+        animation-name: scaleUp, fadeIn;
+        animation-duration: 1s;
+        animation-delay: 1s;
+        animation-timing-function: linear;
+      }
+
+      .box02 {
+        animation-name: slide;
+        animation-duration: 1s;
+        /* animation-iteration-count: infinite; */
+        /* animation-direction: alternate-reverse; */
+        animation-fill-mode: both;
+        animation-delay: 1s;
+
+        animation: slide 1s 2s infinite both ease alternate,
+          fadeIn 0.5s 0s 3 both ease;
+      }
+
+      @keyframes scaleUp {
+        to {
+          transform: scale(1.5);
+        }
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        75% {
+          opacity: 0.4;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slide {
+        from {
+          transform: translateX(200px) scale(2);
+        }
+        to {
+          transform: translateX(100px) scale(2);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSS Animation</h1>
+    <p>
+      애니메이션을 정의한 후 재생 여부, 방향, 횟수 등 구체적으로 애니메이션을
+      실행할 수 있다.
+    </p>
+    <p>
+      값의 변화가 있을 때 적용되는 transition과 다르게 자유롭게 제어할 수 있다.
+    </p>
+    <p>@keyframs를 통해 애니메이션을 정의한다.</p>
+    <p>
+      시작점과 끝점만 필요하다면 from과 to로 지정할 수 있다. <br />
+      원래 상태와 시작점에 상태가 동일하다면 from을 생략할 수 있다.
+    </p>
+    <p>%를 통해서 구체적인 구간을 지정할 수 있다.</p>
+
+    <div class="box box01"></div>
+    <div class="box box02"></div>
+  </body>
+</html>
