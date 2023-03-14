@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CSS flex</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center; /* 주축 */
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 10px;
+        height: 500px;
+
+        border: 3px solid black;
+        box-sizing: content-box;
+      }
+
+      .item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        flex-basis: 200px; /* 진행 방향에 대한 기본 크기 */
+        flex-grow: 1; /* 컨테이너의 공간이 남을 때 아이템의 크기가 증가하는 비율 */
+
+        width: 100px;
+        height: 100px;
+        border: 3px solid red;
+      }
+
+      .item:nth-child(1) {
+        flex-grow: 1;
+        flex-shrink: 2;
+
+        flex: 1 1 0%;
+        flex: 1; /* grow :1, shrink : 1, basis: 0% */
+        order: 100;
+      }
+      .item:nth-child(2) {
+        flex-grow: 4;
+        flex-shrink: 0;
+        order: 2;
+      }
+      .item:nth-child(3) {
+        flex-grow: 1;
+        flex-shrink: 1;
+        order: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSS flex</h1>
+    <p>
+      컨테이너 요소가 아이템 요소들을 나열하는 방법을 지정할 수 있다. <br />
+      디바이스에 따라서 유연하게 아이템들을 배치할 수 있다.
+    </p>
+
+    <div class="container">
+      <div class="item">1</div>
+      <div class="item">2</div>
+      <div class="item">3</div>
+    </div>
+  </body>
+</html>
