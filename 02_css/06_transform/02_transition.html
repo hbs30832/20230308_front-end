@@ -12,6 +12,11 @@
         height: 100px;
         background-color: #f00;
 
+        transition-property: width;
+        transition-duration: 1000ms;
+        transition-delay: 0ms;
+        transition-timing-function: ease;
+
         transition: width 1000ms 0ms linear, background-color 0s;
       }
 
@@ -19,7 +24,7 @@
         left: 20px;
         width: 200px;
         background-color: #000;
-        transition-delay: 1000ms, 0s;
+        /* transition-delay: 1000ms, 0s; */
       }
     </style>
   </head>
