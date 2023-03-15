@@ -9,36 +9,71 @@
     <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
-    <main>
+    <main id="main">
       <div id="container">
         <div id="loginFormBox">
+          <h1 id="logo">
+            <a href="">Instagram</a>
+          </h1>
           <form>
-            <h1 id="logo">
-              <a href="">Instagram</a>
-            </h1>
             <div class="inputWrapper">
-              <div>
-                <input type="text" />
+              <div class="inputBox">
+                <input
+                  type="text"
+                  placeholder="전화번호, 사용자 이름 또는 이메일"
+                />
               </div>
-              <div>
-                <input type="password" />
+              <div class="inputBox">
+                <input type="password" placeholder="비밀번호" />
               </div>
             </div>
             <button>로그인</button>
           </form>
-          <div class="divideLine">또는</div>
-          <a href="">Facebook으로 로그인</a>
-          <a href="">비밀번호를 잊으셨나요?</a>
+          <div class="divideLine">
+            <span>또는</span>
+          </div>
+          <a href="" class="btnFacebook">
+            <span class="iconBox"></span>
+            Facebook으로 로그인
+          </a>
+          <a href="" class="btnPassword">비밀번호를 잊으셨나요?</a>
         </div>
         <div id="findAccount">
           <p>계정이 없으신가요? <a href="">가입하기</a></p>
         </div>
         <div id="btnBox">
           <p>앱을 다운로드하세요</p>
-          <a href="">구글</a>
-          <a href="">마이크로소프트</a>
+          <a href="">
+            <img src="./assets/LBxTdceDfgS.png" alt="구글 플레이스토어" />
+          </a>
+          <a href="">
+            <img src="./assets/UtJtFmFLCiD.png" alt="마이크로소프트 앱스토어" />
+          </a>
         </div>
       </div>
     </main>
+
+    <footer id="footer">
+      <ul id="linkList">
+        <li><a href="">link</a></li>
+        <li><a href="">link</a></li>
+        <li><a href="">link</a></li>
+        <li><a href="">link</a></li>
+        <li><a href="">link</a></li>
+        <li><a href="">link</a></li>
+        <li><a href="">link</a></li>
+        <li><a href="">link</a></li>
+        <li><a href="">link</a></li>
+        <li><a href="">link</a></li>
+        <li><a href="">link</a></li>
+        <li><a href="">link</a></li>
+        <li><a href="">link</a></li>
+      </ul>
+
+      <div id="copyright">
+        <span>한국어</span>
+        <span>© 2023 Instagram from Meta</span>
+      </div>
+    </footer>
   </body>
 </html>

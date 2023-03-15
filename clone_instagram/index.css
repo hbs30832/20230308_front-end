@@ -1,0 +1,175 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  height: 100vh;
+}
+
+#main {
+  align-self: center;
+  justify-self: center;
+}
+
+#container {
+  text-align: center;
+  width: 350px;
+}
+
+#loginFormBox {
+  display: flex;
+  flex-direction: column;
+
+  padding: 10px 40px;
+  border: 1px solid rgb(219, 219, 219);
+  margin-bottom: 10px;
+}
+
+#logo {
+  margin: 36px 0 12px;
+}
+
+#logo a {
+  display: inline-block;
+  width: 175px;
+  height: 51px;
+
+  background: url("./assets/ajlEU-wEDyo.png") 0 -52px no-repeat;
+
+  font-size: 0;
+}
+
+.inputWrapper {
+  margin-top: 24px;
+}
+
+.inputWrapper .inputBox {
+  padding: 9px 7px 8px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background-color: rgb(250, 250, 250);
+}
+
+.inputWrapper input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.inputWrapper .inputBox {
+  margin-bottom: 6px;
+}
+
+#loginFormBox button {
+  width: 100%;
+
+  border-radius: 8px;
+  background-color: rgb(0, 149, 246);
+  border: none;
+  outline: none;
+  padding: 7px;
+  color: #fff;
+  font-weight: 700;
+  opacity: 0.7;
+
+  margin: 8px 0;
+}
+
+.divideLine {
+  display: flex;
+  align-items: center;
+  margin: 10px 0 18px;
+}
+
+.divideLine span {
+  margin: 0 18px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #888;
+}
+
+.divideLine::before,
+.divideLine::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #bbb;
+}
+
+.btnFacebook {
+  color: #385185;
+  font-weight: 700;
+  margin: 8px 0;
+}
+
+.btnFacebook .iconBox {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+  background: url("./assets/TJztmXpWTmS.png") -414px -259px no-repeat;
+}
+
+.btnPassword {
+  font-size: 12px;
+  color: #00376b;
+  margin-top: 12px;
+  margin-bottom: 10px;
+}
+
+#findAccount {
+  padding: 25px 0;
+  border: 1px solid #dbdbdb;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+#findAccount a {
+  color: #0095f6;
+  font-weight: 700;
+}
+
+#btnBox p {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+#btnBox a img {
+  height: 40px;
+}
+
+footer {
+  padding: 30px 0 40px;
+}
+#linkList {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+}
+
+#linkList a {
+  font-size: 12px;
+  color: #8e8e8e;
+}
+
+#copyright {
+  display: flex;
+  justify-content: center;
+  color: #8e8e8e;
+  gap: 0 20px;
+  margin-top: 20px;
+}
