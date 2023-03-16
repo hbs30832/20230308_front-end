@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>JavaScript</h1>
+    <p>
+      JavaScript는 html과 css로는 불가능한 동적인(Dynamic) 처리를 할 수 있는
+      인터프리터 프로그래밍 언어이다.
+    </p>
+    <h2>JS 실행 방법</h2>
+    <p>
+      script 태그 내부에 JS 코드를 작성하거나, script 태그의 src 속성에 실행할
+      .js 파일을 지정한다.
+    </p>
+
+    <h2>Node.js</h2>
+    <p>
+      JavaScript는 원래 브라우저에서 동작하는 언어이다. <br />
+      Node.js는 JS를 다른 환경에서 실행할 수 있게 도와주는 런타임 환경이다.
+    </p>
+    <script src="./index.js"></script>
+    <!-- <script>
+      console.log("Hello World!");
+    </script> -->
+
+    <script>
+      var currentYear = 2023;
+      var birthYear;
+      var age;
+
+      birthYear = prompt("태어난 연도를 입력하세요. (YYYY)", "");
+      age = currentYear - birthYear + 1; // birthYear는 문자열이지만 JS가 자동으로 형변환.
+      alert("나이는 " + age);
+    </script>
+  </body>
+</html>
