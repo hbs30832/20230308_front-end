@@ -9,13 +9,28 @@
       // 1~100 사이의 숫자
       var num = Math.floor(Math.random() * 100) + 1;
 
-      console.log(num);
+      while (true) {
+        // 문자열로 값을 받는다.
+        var answer = prompt("숫자를 입력해주세요", "");
+        // 변경 불가능한 문자열이 전달되면, NaN(Not a Number) 반환
+        var answerNum = parseInt(answer);
 
-      // 문자열로 값을 받는다.
-      var answer = prompt("숫자를 입력해주세요", "");
+        // isNaN(값) : 값이 NaN가 맞으면 true, 아니면 false
+        // 값 === NaN => X
+        if (isNaN(answerNum)) {
+          alert("숫자만 입력 가능합니다.");
+        }
 
-      if (num === parseInt(answer)) {
-        alert("정답입니다.");
+        // 맞춰야될 숫자보다 작으면 작다고, 크면 크다고 알려주기
+        if (num === answerNum) {
+          // 정답 나오면 while문 탈출
+          alert("정답입니다.");
+          break;
+        } else if (num < answerNum) {
+          alert("입력한 숫자가 더 큽니다.");
+        } else {
+          alert("입력한 숫자가 더 작습니다.");
+        }
       }
     </script>
   </body>
