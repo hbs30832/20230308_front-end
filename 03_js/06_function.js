@@ -99,3 +99,61 @@ function clacSum(n) {
 }
 
 console.log(clacSum(100));
+
+/* 
+    함수의 정의 방식
+
+    1) 함수 선언식(기명함수)
+        - function 키워드 함께 함수를 정의한다.
+        - 호이스팅이 일어난다.
+    
+    2) 함수 표현식(익명함수)
+        - 변수에 함수를 할당하는 방식으로 정의한다.
+            => JS는 함수를 "값"으로 평가한다.
+        - 변수 이름이 함수의 식별자 역할을 한다.
+            => 할당된 함수에 이름을 작성해도 식별자의 역할을 못한다.
+        - 함수 호이스팅 일어나지 않는다.
+            => 호이스팅은 일어나지만 초기화가 안된다.
+    
+    3) 화살표 함수(Arrow Function)
+        - 함수표현식의 일부.
+        - "=>"를 통해 함수를 표현한다.
+        - 함수의 표현을 간결하게 작성할 수 있다.
+        - 코드 블록과 return 키워드를 생략하여 값을 반환할 수 있다.
+            => "=>" 뒤에 표현식(값)을 작성해야한다.
+        - 간결하기 때문에 다른 함수의 인자로 전달할 때 많이 사용한다.
+        - this 바인딩이 되지 않는다.
+        - {}는 객체를 나타내는 기호이기도 하기 때문에 객체를 리턴하는데 return을 생략하려면 () => ({})
+*/
+
+// multiply(1, 2);
+// 함수 표현식에 할당하는 함수에 이름을 넣어도 참조할 수 없다.
+let multiply = function mul(a, b) {
+  return a * b;
+};
+
+let copy = multiply; // 함수 자체를 할당.
+let num = multiply(2, 3); // 함수의 실행결과를 할당.
+
+console.log(multiply(2, 3));
+
+// let division = (a, b) => {
+//   return a / b;
+// };
+
+let division = (a, b) => a / b;
+
+// 더하기, 빼기 함수 화살표 함수로 작성하기
+let sumNum = (a, b) => a + b;
+let subNum = (a, b) => a - b;
+
+console.log(division(6, 3));
+
+let makeUser = (name, age) => ({
+  name: name,
+  age: age,
+});
+
+let user = makeUser("seok", 31);
+
+console.log(user);
