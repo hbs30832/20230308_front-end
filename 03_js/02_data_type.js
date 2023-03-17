@@ -11,7 +11,7 @@
 var age = 30;
 console.log(age + 10);
 var PI = 3.14;
-console.log(0.1 + 0.2); // JS는 정밀한 수학 계산에 적합하지 않다.
+console.log(0.1 + 0.2); // JS는 정밀한 수학 계산에 적합하지 않다. 부동소수점.
 console.log(typeof age);
 
 /* 
@@ -40,7 +40,7 @@ console.log(typeof isOld, isOld);
 */
 
 var year;
-console.log(year);
+console.log(year); // undefined.
 year = 2023;
 
 year = null; // 유효하지 않은 상태라고 명시.
@@ -60,7 +60,7 @@ console.log(fruits);
 /* 
     객체(Object)
         - 배열과 비슷하게 여러개의 값을 저장할 수 있다.
-        - 속성을 통해서 고유한 정보를 만들어낼 수 있다.
+        - 속성(Property)을 통해서 고유한 정보를 만들어낼 수 있다.
             => 속성은 key(속성이름)-value(속성값)의 형태로 사용한다.
         - .을 통해서 해당 객체의 속성값들을 참조할 수 있다.
 */
@@ -70,3 +70,4 @@ var user = {
 };
 
 console.log(user.age);
+console.log(user["age"]);
