@@ -70,3 +70,5 @@ Array.prototype.customIncludes = function (value) {
 
 console.log(numList.customIncludes(20));
 console.log(numList.customIncludes(40)); // false
+
+// 주석 추가...
