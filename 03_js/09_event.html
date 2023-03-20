@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JS 이벤트 처리</h1>
+    <p>
+      브라우저에서 발생하는 거의 모든 것 이벤트라고 한다. <br />
+      이벤트가 발생했을 때 해당 이벤트를 감지해서 처리하는 것이 가능하다.
+    </p>
+    <!-- 인라인 방식 : on + 이벤트 종류에 JS코드를 작성한다. -->
+    <div class="box" onclick="alert('box클릭')"></div>
+
+    <script>
+      const box = document.querySelector(".box");
+
+      // 요소.on이벤트 속성에 함수 형태로 할당하는 방식.
+      // 같은 이벤트에 대해서 여러번 할당을 하면 덮어쓴다.
+      box.onclick = function () {
+        console.log("박스 클릭 : 프로퍼티 할당 방식");
+      };
+
+      /* 
+        addEventListener("이벤트종류", 콜백함수)
+            - 이벤트 바인딩을 추가한다. 즉, 기존 이벤트 처리를 덮어쓰지 않는다.
+
+        removeEventListener("이벤트 종류", 함수 식별자)
+            - 이벤트 바인딩을 지운다.
+            - 기명함수로 추가되어있어야 지울 수 있다. 즉, 식별자가 있어야한다.
+      */
+      box.addEventListener("click", function () {
+        alert("클릭! : addEventListener");
+      });
+
+      box.addEventListener("click", consoleClick);
+
+      //   box.removeEventListener("click", consoleClick);
+
+      /* 
+            이벤트 객체
+                - 이벤트 바인딩하면 콜백함수에 첫번째 인자로 이벤트에 대한 정보를 담은 객체 전달된다.
+                - e.target : 이벤트가 실제 발생한 타겟.
+                - e.currentTarget : 이벤트가 바인딩된 타겟.
+                    => 이벤트는 전파된다.
+       */
+      function consoleClick(e) {
+        console.log(e.target);
+        console.log("클릭 : consoleClick");
+      }
+
+      box.addEventListener("mouseenter", function (e) {
+        console.log(e);
+      });
+
+      document.body.addEventListener("click", function (e) {
+        console.log(`e.target:`, e.target);
+        console.log(`e.currentTarget`, e.currentTarget);
+      });
+    </script>
+  </body>
+</html>
