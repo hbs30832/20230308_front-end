@@ -68,5 +68,5 @@ Array.prototype.customIncludes = function (value) {
   return false;
 };
 
-console.log(numList.customIncludes(20)); // true
+console.log(numList.customIncludes(20));
 console.log(numList.customIncludes(40)); // false
