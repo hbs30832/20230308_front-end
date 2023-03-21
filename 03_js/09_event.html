@@ -32,10 +32,12 @@
       /* 
         addEventListener("이벤트종류", 콜백함수)
             - 이벤트 바인딩을 추가한다. 즉, 기존 이벤트 처리를 덮어쓰지 않는다.
+            - 세번째 인자로 이벤트 바인딩 옵션(객체)을 전달한다.
 
         removeEventListener("이벤트 종류", 함수 식별자)
             - 이벤트 바인딩을 지운다.
             - 기명함수로 추가되어있어야 지울 수 있다. 즉, 식별자가 있어야한다.
+            - 이벤트 바인딩 옵션도 동일하게 작성해야한다.
       */
       box.addEventListener("click", function () {
         alert("클릭! : addEventListener");
