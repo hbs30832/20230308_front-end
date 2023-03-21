@@ -26,6 +26,23 @@
         height: 100px;
         background-color: red;
       }
+
+      .todoList {
+        border: 3px solid black;
+        padding: 20px 0;
+        list-style: none;
+      }
+
+      .todoList li {
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+      }
+
+      .todoList li.active {
+        color: #ccc;
+        font-weight: bold;
+        text-decoration: line-through;
+      }
     </style>
   </head>
   <body>
@@ -33,6 +50,14 @@
     <button class="btnCreate">박스 생성!</button>
     <div class="container">
       <div class="box">박스</div>
+    </div>
+
+    <div>
+      <input type="text" class="inputTodo" />
+      <button class="btnSubmit">등록</button>
+      <ul class="todoList">
+        <li>할일</li>
+      </ul>
     </div>
 
     <script>
@@ -69,7 +94,64 @@
         boxElem.appendChild(textNode);
 
         containerElem.appendChild(boxElem);
+
+        boxElem.addEventListener("click", function () {
+          let ok = confirm("정말 삭제하시겠습니까?");
+
+          if (ok) {
+            // boxElem.remove(); 메모리에서 아예 삭제
+            let parent = boxElem.parentElement; // 부모노드를 가리킨다.
+            parent.removeChild(boxElem); // DOM 트리에서 부모-자식을 끊기만한다. 해당 노드를 반환한다.
+          }
+        });
       }
+
+      let inputTodo = document.querySelector(".inputTodo");
+      let btnSubmit = document.querySelector(".btnSubmit");
+      let todoList = document.querySelector(".todoList");
+
+      let todoItems = document.querySelectorAll(".todoList li");
+
+      btnSubmit.addEventListener("click", createTodo);
+
+      function createTodo() {
+        // console.log(inputTodo.value);
+        console.log(todoList.innerText); // 요소 안에 있는 텍스트 노드를 읽는다.
+
+        // 기존의 자식노드를 지우고, 텍스트 노드의 값을 추가한다. 추가x.
+        // todoList.innerText = `<li>${inputTodo.value}</li>`;
+
+        console.log(todoList.innerHTML); // 자식으로 포함되어 있는 노드들을 요소노드까지 포함해서 문자열로 파싱한다.
+        todoList.innerHTML += `<li>${inputTodo.value}</li>`; // 문자열을 HTML 요소로 파싱해서 값을 변경한다.
+
+        // 등록이 끝난 후
+        inputTodo.value = "";
+        inputTodo.focus();
+      }
+
+      //   let str = "";
+      //   for (let i = 0; i < 1000; i++) {
+      //     str += `<li>할일</li>`;
+      //   }
+
+      //   todoList.innerHTML = str;
+
+      /* 
+        이벤트 위임
+            - 이벤트가 상위요소로 전파되는 점을 이용해서, 상위 요소에서 한번에 처리할 수 있다.
+      */
+
+      todoList.addEventListener("click", function (e) {
+        console.log("e.taregt : ", e.target);
+        console.log("e.currentTarget", e.currentTarget);
+
+        if (e.target.matches(".todoList li")) {
+          // 글씨 색상 #ccc, 취소선, 굵게
+          e.target.classList.toggle("active");
+        }
+
+        // 삭제 버튼 클릭시 "정말 삭제하시겠습니까?" 확인창 출력.
+      });
     </script>
   </body>
 </html>
