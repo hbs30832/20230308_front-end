@@ -36,6 +36,9 @@
       .todoList li {
         border-top: 1px solid black;
         border-bottom: 1px solid black;
+
+        cursor: pointer;
+        user-select: none;
       }
 
       .todoList li.active {
@@ -55,9 +58,7 @@
     <div>
       <input type="text" class="inputTodo" />
       <button class="btnSubmit">등록</button>
-      <ul class="todoList">
-        <li>할일</li>
-      </ul>
+      <ul class="todoList"></ul>
     </div>
 
     <script>
@@ -116,13 +117,21 @@
 
       function createTodo() {
         // console.log(inputTodo.value);
+
+        if (inputTodo.value === "") {
+          alert("할일을 입력해주세요.");
+          return; // input태그가 비어있다면 함수 종료.
+        }
         console.log(todoList.innerText); // 요소 안에 있는 텍스트 노드를 읽는다.
 
         // 기존의 자식노드를 지우고, 텍스트 노드의 값을 추가한다. 추가x.
         // todoList.innerText = `<li>${inputTodo.value}</li>`;
 
         console.log(todoList.innerHTML); // 자식으로 포함되어 있는 노드들을 요소노드까지 포함해서 문자열로 파싱한다.
-        todoList.innerHTML += `<li>${inputTodo.value}</li>`; // 문자열을 HTML 요소로 파싱해서 값을 변경한다.
+        todoList.innerHTML += `<li>
+                ${inputTodo.value}
+                <button class="btnDel">삭제</button>
+            </li>`; // 문자열을 HTML 요소로 파싱해서 값을 변경한다.
 
         // 등록이 끝난 후
         inputTodo.value = "";
@@ -148,6 +157,9 @@
         if (e.target.matches(".todoList li")) {
           // 글씨 색상 #ccc, 취소선, 굵게
           e.target.classList.toggle("active");
+        } else if (e.target.matches(".todoList li .btnDel")) {
+          let ok = confirm("정말 삭제하시겠습니까?");
+          if (ok) e.target.parentElement.remove();
         }
 
         // 삭제 버튼 클릭시 "정말 삭제하시겠습니까?" 확인창 출력.
