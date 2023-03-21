@@ -61,6 +61,10 @@ let result = users.forEach(function (user) {
   console.log(`안녕하세요, 저는 ${user.age}세 ${user.name}입니다.`);
 });
 
+users.forEach((user) => {
+  console.log(`안녕하세요, 저는 ${user.age}세 ${user.name}입니다.`);
+});
+
 console.log(result);
 
 /* 
@@ -75,6 +79,8 @@ console.log(result);
 let oldUsers = users.filter(function (user) {
   return user.age >= 30;
 });
+
+users.filter((user) => user.age >= 30);
 
 console.log("oldUsers: ", oldUsers);
 console.log("users : ", users);
@@ -91,6 +97,8 @@ console.log("users : ", users);
 let doubleNumbers = numbers.map(function (num) {
   return num * 2;
 });
+
+numbers.map((num) => num * 2);
 
 console.log(doubleNumbers);
 console.log(numbers);
@@ -122,3 +130,84 @@ function add(a, b) {
 }
 
 console.log(total, total02);
+
+// users => age가 30 이상인 객체의 이름만 oldUserNames 배열로 모으기
+let filterArr = users.filter((user) => user.age >= 30);
+let oldUserNames = filterArr.map((user) => user.name);
+
+// 메서드 체이닝 : 메서드의 반환값에 따라서 바로 메서드를 이용해서 사용.
+oldUserNames = users.filter((user) => user.age >= 30).map((user) => user.name);
+console.log(oldUserNames);
+
+/* 
+    유사배열 : 배열처럼 key값이 인덱스이고, length 프로퍼티를 갖는 객체. 
+        - 이름처럼 배열과 유사하지만 배열은 아니기 때문에 배열의 다른 함수들을 사용하는 것이 불가능.
+            => HTMLCollection, NodeList 등...
+*/
+let arrayLike = {
+  0: "Seok",
+  1: "Minseok",
+  2: "JeongCheol",
+  length: 3,
+};
+
+console.log(arrayLike[0]);
+// arrayLike.forEach((item) => console.log(item)); 배열이 아니기 때문에 forEach함수가 없다.
+
+/* 
+    Array.from()
+        - 유사배열 혹은 반복가능한 객체(이터러블)를 배열로 만들어서 반환한다.
+*/
+let arr = Array.from(arrayLike);
+console.log(arr);
+arr.forEach((item) => console.log(item));
+
+/* 
+    원시값과 참조값
+
+    원시값(Primitive)
+        - 변경이 불가능한 값.
+        - String, Number, Boolean, undefined, null
+        - 복사를 하면 값 복사가 일어난다.
+
+
+    객체 타입(참조)
+        - 변경이 가능한 값.
+        - Array, Function 등이 모두 객체에 포함된다.
+        - 복사를 하면 주소 복사가 일어난다.
+        - 객체의 프로퍼티가 객체인 경우는 얕은 복사와 깊은 복사의 차이가 있다.
+            => 얕은복사 : 겉에만 값 복사가 일어나고 프로터기 객체인 경우 참조 복사가 일어난다.
+            => 깊은 복사 : 프로퍼티가 객체인 경우에도 값 복사가 일어나게 재귀적으로 복사.
+*/
+
+let num = 1;
+let copyNum = num;
+copyNum = 2;
+console.log("num : ", num);
+console.log("copy : ", copyNum);
+
+let list = [1, 2, 3];
+let copyList = list;
+copyList.push(4);
+
+console.log("list : ", list);
+console.log("copyList : ", copyList);
+console.log("list === copyList", list === copyList); // 주소 복사가 일어나기 때문에 둘은 같다.
+
+let copyList02 = list.slice(); // 처음부터 끝까지 복사.
+console.log(copyList02);
+console.log("list === copyList02", list === copyList02);
+
+//
+
+let obj = {
+  name: {
+    last: "Seok",
+    first: "Hwangbo",
+  },
+};
+
+let copyObj = Object.assign({}, obj);
+console.log(obj, copyObj);
+console.log(obj === copyObj);
+console.log(obj.name === copyObj.name);
