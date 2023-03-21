@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        text-align: center;
+      }
+      .container {
+        display: flex;
+        width: 500px;
+        margin: 0 auto;
+        border: 3px solid black;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>동적 사이트</h1>
+    <button class="btnCreate">박스 생성!</button>
+    <div class="container">
+      <div class="box">박스</div>
+    </div>
+
+    <script>
+      let containerElem = document.querySelector(".container");
+
+      // 요소 노드 생성 - 어떠한 요소인지 나타내는 노드
+      //  document.createElement("요소의 종류(태그)")
+      let divElem = document.createElement("div");
+
+      //  생성한 노드를 문서에 나타내기
+      // Element.appendChild : 자식 노드를 나타낸다.
+      containerElem.appendChild(divElem);
+
+      // 속성 노드 생성.
+      let classNode = document.createAttribute("class");
+      // 속성 노드 나타내기.
+      divElem.setAttributeNode(classNode);
+      classNode.value = "box";
+
+      let textNode = document.createTextNode("박스");
+      divElem.appendChild(textNode);
+
+      let btnCreate = document.querySelector(".btnCreate");
+
+      btnCreate.addEventListener("click", createBox);
+
+      // 생성버튼 클릭시 마다 박스 생성!
+      function createBox() {
+        let boxElem = document.createElement("div");
+        let textNode = document.createTextNode("박스");
+
+        // boxElem.setAttribute("class", "box"); 속성을 바로 설정.
+        boxElem.classList.add("box");
+        boxElem.appendChild(textNode);
+
+        containerElem.appendChild(boxElem);
+      }
+    </script>
+  </body>
+</html>
