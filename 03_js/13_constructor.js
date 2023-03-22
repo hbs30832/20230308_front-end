@@ -82,3 +82,123 @@ cat.cry();
 
 let obj = new Object();
 console.log(obj);
+
+/* 
+    클래스(Class)
+      - 생성자 함수와 동일한 역할을 한다.
+      - 다른 객체지향 프로그래밍 언어에서 흔히 사용하는 클래스 개념을 도입했다.
+        => 새로운 개념이 아니라 프로토타입 기반인 것은 동일하다.
+        => 문법적으로 사용하기 쉽게 만들어진 것으로 이를 "문법적 설탕"이라고 표현한다.
+      - class라는 키워드를 사용한다.
+        => ()를 사용하지 않는다.
+      - new 키워드와 함께 클래스를 호출하면 constructor가 객체를 초기화한다.
+        => 초기화할 값이 없다면 constructor 생략이 가능하다.
+        => JS가 내부적으로 자동으로 constructor를 생성한다.
+*/
+class Player {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  // 프로토타입 메서드 선언
+  hello() {
+    console.log(`안녕하세요 저는 ${this.name}입니다.`);
+  }
+
+  static isPlayer(obj) {
+    return obj instanceof Player;
+  }
+}
+
+let player = new Player("Seok", 31);
+console.log(player);
+player.hello();
+
+console.log("player is Player? ", Player.isPlayer(player));
+
+class Animal {
+  constructor(legs, color) {
+    this.legs = legs;
+    this.color = color;
+  }
+
+  eat() {
+    console.log("밥을 먹습니다.");
+  }
+}
+
+/* 
+  클래스의 상속
+    - 상위 클래스를 상속받아서 메서드 등을 사용할 수 있다.
+    - 상속받을 때 constructor를 작성하면 내부에 super(상위 클래스의 constructor)를 호출해야한다.
+*/
+class Dog extends Animal {
+  constructor(color) {
+    super(4, color);
+  }
+  bow() {
+    console.log("멍!멍!");
+  }
+
+  // 오버라이딩 : 상위 클래스의 메서드를 덮어쓴다.
+  eat() {
+    console.log("사료를 먹습니다.");
+  }
+}
+
+let dog = new Dog("black");
+
+console.log(dog);
+dog.eat();
+dog.bow();
+
+// Bird 다리는 2개, color는 생성할 때 초기화. "날아가요~~~" 출력하는 fly 메서드 만들기
+class Bird extends Animal {
+  constructor(color) {
+    super(2, color);
+  }
+
+  fly() {
+    console.log("날아가요~~~");
+  }
+}
+
+const bird = new Bird("white");
+console.log(bird);
+bird.fly();
+
+/* 
+  Car 클래스 만들기
+    - color, speed, gas(연료량), eco(연비)
+    - move(이동거리) 호출하면 "?km/h 속도로 km 이동. 남은연료 : 연료량" 출력 후 실제 연료 줄이기.
+      => gas 모자라면 "연료가 부족합니다" 출력.
+    - getGas(연료) => 주유. 연료 증가.
+*/
+
+class Car {
+  constructor(color, speed, gas, eco) {
+    this.color = color;
+    this.speed = speed;
+    this.gas = gas;
+    this.eco = eco;
+  }
+
+  move(distance) {
+    if (this.gas > distance / this.eco) {
+      this.gas -= distance / this.eco;
+      console.log(
+        `${this.speed}km/h로 ${distance}km 이동. 남은연료 : ${this.gas}L`
+      );
+    } else {
+      console.log("연료가 부족합니다.");
+    }
+  }
+}
+
+let car = new Car("red", 100, 50, 10);
+car.move(10);
+car.move(30);
+car.move(400);
+car.move(100);
+console.log(car);
