@@ -53,8 +53,45 @@ promise
 
 // 인자로 전달받은 제목의 영화가 있으면 resolve, 없으면 "찾는 영화가 없습니다." 에러 발생
 //      => 3초 뒤에
-function getData() {
-  return new Promise();
+function getData(title) {
+  return new Promise((resolve, reject) => {
+    let data = movies.find((movie) => movie.title == title);
+
+    setTimeout(() => {
+      if (data) {
+        resolve(data);
+      }
+
+      reject("찾는 영화가 없습니다.");
+    }, 3000);
+  });
 }
 
-getData().then();
+getData("슬램덩크")
+  .then((data) => console.log(data))
+  .catch((err) => console.log(err));
+
+/* 
+    async/await
+        - 함수 앞에다가 async를 붙이면 비동기 처리 함수가 된다.
+            => 비동기 코드를 동기 코드처럼 작성할 수 있게 도와준다.
+        - 프로미스 앞에 await을 붙이면 resolve될 때까지 기다린 후 다음 코드를 실행한다.
+        - try/catct문을 통해서 에러 처리를 할 수 있다.
+        - await은 async 함수 내부에서만 사용 가능하다.
+        - async 함수는 값을 return 그 값을 resolve 하는 프로미스가 반환된다.
+        
+*/
+
+async function render(title) {
+  try {
+    let data = await getData(title);
+    console.log("화면에 출력 : ", data);
+
+    return data.title;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+// async 함수의 return값은 Promise가 된다.
+render("웅남이").then((title) => title);
