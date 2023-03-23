@@ -97,7 +97,7 @@ console.log(isOld);
         falsy : false처럼 동작하는 값.
             => 0, undefined, null, ""
 */
-let color = "blue" && "red";
+let color = "blue" || "red";
 console.log(color);
 
 foo(color);

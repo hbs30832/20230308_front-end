@@ -48,7 +48,7 @@ console.log(user04);
 
 // prototype : 인스턴스가 공통으로 사용할 메서드, 프로퍼티를 상속시켜준다.
 
-// 프로포타입 메서드 : 인스턴스가 프로토타입에게 상속받아 사용하는 메서드.
+// 프로토타입 메서드 : 인스턴스가 프로토타입에게 상속받아 사용하는 메서드.
 User.prototype.hello = function () {
   console.log(`안녕하세요 저는 ${this.name}입니다.`);
 };
@@ -101,7 +101,7 @@ class Player {
     this.age = age;
   }
 
-  // 프로토타입 메서드 선언
+  // 프로토타입 메서드 선언 => 함축 표현 사용. function 키워드 제외
   hello() {
     console.log(`안녕하세요 저는 ${this.name}입니다.`);
   }
