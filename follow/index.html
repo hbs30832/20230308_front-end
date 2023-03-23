@@ -21,7 +21,8 @@
       let prevList = [];
       btnSubmit.addEventListener("click", render);
 
-      inputWord.addEventListener("keyup", (e) => {
+      inputWord.addEventListener("keypress", (e) => {
+        console.log("누름");
         if (e.code === "Enter") render();
       });
 
