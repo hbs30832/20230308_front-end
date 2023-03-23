@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>끝말 잇기</h1>
+
+    <h3 id="keyword">제시어</h3>
+    <input type="text" id="inputWord" />
+    <button id="btnSubmit">등록</button>
+    <script>
+      let keyword = document.getElementById("keyword");
+      let inputWord = document.getElementById("inputWord");
+      let btnSubmit = document.getElementById("btnSubmit");
+
+      // 입력할 때마다 담아서 있는지 확인
+      let prevList = [];
+      btnSubmit.addEventListener("click", render);
+
+      inputWord.addEventListener("keyup", (e) => {
+        if (e.code === "Enter") render();
+      });
+
+      function render() {
+        let keywordStr = keyword.innerText;
+        if (keywordStr.at(-1) === inputWord.value[0]) {
+          if (prevList.includes(inputWord.value)) {
+            alert("이미 입력된 단어입니다.");
+            return;
+          }
+          console.log(inputWord.value);
+          keyword.innerText = inputWord.value;
+          prevList.push(inputWord.value);
+        } else {
+          alert("올바르지 않은 입력입니다.");
+        }
+
+        inputWord.value = "";
+        inputWord.focus();
+      }
+    </script>
+  </body>
+</html>
