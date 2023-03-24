@@ -1,17 +1,20 @@
 // h1태그에 오늘 날짜 넣기
 let today = new Date();
 let logo = document.getElementById("logo");
-let btnSubmit = document.querySelector(".footer button");
 let todoList = document.querySelector(".body ul");
 let todoItems = document.querySelectorAll(".body ul li");
+let inputForm = document.querySelector(".footer form");
+let btnSave = document.querySelector(".btnSave");
 
 logo.innerText = today.toLocaleDateString("ko-KR", {
   dateStyle: "full",
 });
 
+// form 태그 내에서 버튼 클릭하거나 엔터 입력시 submit 이벤트 발생!
 // 등록 버튼 클릭시 값 읽어오기 => alert 창에 출력!
-btnSubmit.addEventListener("click", function () {
-  let inputText = document.querySelector(".footer input").value;
+inputForm.addEventListener("submit", function (e) {
+  e.preventDefault(); // 태그의 기본 기능 수행을 막는다.
+  let inputText = document.querySelector(".footer input");
 
   //   let liElem = document.createElement("li");
   //   liElem.addEventListener("click", function () {
@@ -30,10 +33,13 @@ btnSubmit.addEventListener("click", function () {
 
   todoList.innerHTML += `
     <li>
-        ${inputText}
-        <button>삭제</button>
+        ${inputText.value}
+        <button class="btnDel">삭제</button>
     </li>
   `;
+
+  inputText.value = "";
+  inputText.focus();
 });
 
 // todoItems.forEach((item) => {
@@ -45,5 +51,22 @@ btnSubmit.addEventListener("click", function () {
 todoList.addEventListener("click", function (e) {
   if (e.target.matches(".body ul li")) {
     e.target.classList.toggle("done");
+  } else if (e.target.matches(".btnDel")) {
+    let ok = confirm("정말 삭제하시겠습니까?");
+    if (ok) {
+      // 부모 요소 탐색 후 삭제.
+      e.target.parentElement.remove();
+    }
   }
 });
+
+btnSave.addEventListener("click", function () {
+  //   localStorage.setItem("test", "저장되었나요???");
+
+  let todoItems = document.querySelectorAll(".body ul li");
+
+  // 유사배열을 펼쳐서 배열로 만들기.
+  let todoArr = [...todoItems];
+});
+
+console.log(localStorage.getItem("test"));
