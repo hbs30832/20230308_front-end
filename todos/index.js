@@ -17,7 +17,7 @@ if (todos) {
     todoList.innerHTML += `
         <li>
             <span>${todo}</span>
-            <button>삭제</button>
+            <button class="btnDel">삭제</button>
         </li>
     `;
   });
