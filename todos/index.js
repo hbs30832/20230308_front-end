@@ -10,6 +10,17 @@ logo.innerText = today.toLocaleDateString("ko-KR", {
   dateStyle: "full",
 });
 
+let todos = JSON.parse(localStorage.getItem("todos"));
+
+todos.forEach((todo) => {
+  todoList.innerHTML += `
+        <li>
+            ${todo}
+            <button>삭제</button>
+        </li>
+    `;
+});
+
 // form 태그 내에서 버튼 클릭하거나 엔터 입력시 submit 이벤트 발생!
 // 등록 버튼 클릭시 값 읽어오기 => alert 창에 출력!
 inputForm.addEventListener("submit", function (e) {
@@ -33,7 +44,7 @@ inputForm.addEventListener("submit", function (e) {
 
   todoList.innerHTML += `
     <li>
-        ${inputText.value}
+        <span>${inputText.value}</span>
         <button class="btnDel">삭제</button>
     </li>
   `;
@@ -63,10 +74,14 @@ todoList.addEventListener("click", function (e) {
 btnSave.addEventListener("click", function () {
   //   localStorage.setItem("test", "저장되었나요???");
 
-  let todoItems = document.querySelectorAll(".body ul li");
+  let todoItems = document.querySelectorAll(".body ul li span");
 
   // 유사배열을 펼쳐서 배열로 만들기.
   let todoArr = [...todoItems];
-});
 
-console.log(localStorage.getItem("test"));
+  let textList = todoArr.map((todo) => todo.innerText);
+
+  console.log(textList);
+
+  localStorage.setItem("todos", JSON.stringify(textList));
+});
