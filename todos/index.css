@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+#app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+
+  width: 350px;
+  margin: 0 auto;
+  border: 1px solid #bbb;
+}
+
+.header {
+  padding: 10px;
+  border-bottom: 1px solid #bbb;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+.body ul li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #bbb;
+  padding: 5px 10px;
+}
+
+.body ul li.done {
+  text-decoration: line-through;
+  color: #bbb;
+  font-weight: bold;
+}
+
+.footer {
+  display: flex;
+}
+
+.footer input {
+  flex: 1;
+  padding: 5px;
+  outline: none;
+}
