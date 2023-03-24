@@ -12,14 +12,16 @@ logo.innerText = today.toLocaleDateString("ko-KR", {
 
 let todos = JSON.parse(localStorage.getItem("todos"));
 
-todos.forEach((todo) => {
-  todoList.innerHTML += `
+if (todos) {
+  todos.forEach((todo) => {
+    todoList.innerHTML += `
         <li>
-            ${todo}
+            <span>${todo}</span>
             <button>삭제</button>
         </li>
     `;
-});
+  });
+}
 
 // form 태그 내에서 버튼 클릭하거나 엔터 입력시 submit 이벤트 발생!
 // 등록 버튼 클릭시 값 읽어오기 => alert 창에 출력!
