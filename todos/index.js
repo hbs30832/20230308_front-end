@@ -73,7 +73,8 @@ todoList.addEventListener("click", function (e) {
   }
 });
 
-btnSave.addEventListener("click", function () {
+// 윈도우 창 종료 직전 이벤트
+window.addEventListener("beforeunload", function () {
   //   localStorage.setItem("test", "저장되었나요???");
 
   let todoItems = document.querySelectorAll(".body ul li span");
