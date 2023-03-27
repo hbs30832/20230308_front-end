@@ -1,35 +1,27 @@
-function Item({ name, isPacked }) {
-  return (
-    <li className="item">
-      {name} {isPacked && "✔"}
-    </li>
-  );
-}
+import { people } from "./data";
+import { getImageUrl } from "./utils";
 
-export default function PackingList() {
-  return (
-    <section>
-      <h1>Sally Ride's Packing List</h1>
-      <ul>
-        <Item isPacked={true} name="Space suit" />
-        <Item isPacked={true} name="Helmet with a golden leaf" />
-        <Item isPacked={false} name="Photo of Tam" />
-      </ul>
-    </section>
-  );
+// Subrahmanyan Chandrasekhar : astrophysicist
+export default function List() {
+  const chemists = people.filter((person) => person.profession === "chemist");
+  const listItem = chemists.map((person) => (
+    <li key={person.id} style={{ display: "flex" }}>
+      <img src={getImageUrl(person)} alt={person.name} />
+      <div>
+        <b>{person.name}</b> : {person.profession}
+        <p>{person.accomplishment}</p>
+      </div>
+    </li>
+  ));
+  return <ul>{listItem}</ul>;
 }
 
 /* 
-  조건부 렌더링
-    - 조건에 따라 보여줄 내용이 달라지거나 혹은 렌더링 여부를 결정할 수 있다.
-
-    1) if문을 통해 조건에 따라 다른 jsx를 return한다.
-      => 간단한 내용보다는 조건에 따라 컴포넌트 자체가 달라지는 것처럼 구조 자체가 바뀔 때 사용한다.
-      => 조건에 따라 내용을 렌더링하지 않고자 할 때는 null return하면 된다.
-
-    2) 삼항 연산자( ? : )
-      => jsx 안에서는 if문 사용이 불가능하기 때문에 jsx 안에서 내용을 다르게 할 때 사용한다.
-    
-    3) &&(and)
-      => 단순히 앞에 조건에 따라 뒤에 내용이 렌더링 될지말지 정할 때 사용한다.
+  배열 렌더링하기
+    - JSX에 배열을 포함시키면 배열에 있는 아이템들을 렌더링할 수 있다.
+    - 데이터를 배열로 관리하면서 map()과 filter() 함수를 통해서 렌더링할 수 있다.
+      => map() : 데이터를 JSX 변환할 수 있다.
+      => filter() : 렌더링할 데이터를 필터링할 수 있다.
+    - 배열을 렌더링할 때는 JSX에 고유한 key값을 부여해야한다.
+      => React가 각 데이터를 구분해서 성능 최적화를 할 수 있다.
 */
