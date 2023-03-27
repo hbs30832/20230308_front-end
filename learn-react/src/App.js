@@ -1,26 +1,24 @@
-// 컴포넌트 : JS 함수 형태로 작성. 대문자로 시작하는 파스칼 케이스.
-function Profile() {
-  return <img src="https://i.imgur.com/MK3eW3Am.jpg" alt="Katherine Johnson" />;
-}
+// Gallery.jsx에 작성된 Gallery 컴포넌트를 import.
+import Gallery from "./Gallery";
+import { Profile } from "./Gallery"; // named export.
 
-export default function Gallery() {
+// src/App.js
+export default function App() {
   return (
-    <section>
-      <h1>Amazing Scientists</h1>
-      <Profile />
-      <Profile />
-      <Profile />
-    </section>
+    <div>
+      <Gallery />
+      <Gallery />
+    </div>
   );
 }
 
 /* 
-  컴포넌트
-    - UI를 JS 함수 형태로 작성하여 조각으로 만들 수 있다.
-    - 컴포넌트 함수는 대문자로 시작해야한다.
-    - 마크업 언어를 return 한다.
-      => 해당 요소들이 화면에 출력된다.
-    - 복잡한 구조의 UI를 만들면 재사용성이 증가한다.
-    - 하나의 파일의 여러개의 컴포넌트를 작성할 수 있다.
-      => 위의 예제에서 Gallery를 부모 컴포넌트, Profile을 자식 컴포넌트라고 볼 수 있다.
+  컴포넌트 export/import
+
+  - 루트 컴포넌트는 기본적으로 create-reate-app로 프로젝트를 만들면, App.js 루트 컴포넌트가 된다.
+      => index.js가 가장 먼저 실행되고, 가장 먼저 렌더링되는 컴포넌트가 App 컴포넌트다.
+      => 언제든 마음대로 변경할 수 있다. 
+  - export/import문을 통해서 컴포넌트를 별도의 파일로 관리할 수 있다.
+      => export default나 named export 둘다 상관없지만, 핵심이 되는 컴포넌트는 export default 권고.
+      => named export를 적절히 활용하면 하나의 파일에서 여러 컴포넌트를 내보낼 수 있다.
 */
