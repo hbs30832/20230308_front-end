@@ -1,24 +1,38 @@
-// Gallery.jsx에 작성된 Gallery 컴포넌트를 import.
-import Gallery from "./Gallery";
-import { Profile } from "./Gallery"; // named export.
-
-// src/App.js
-export default function App() {
+export default function TodoList() {
   return (
-    <div>
-      <Gallery />
-      <Gallery />
-    </div>
+    // This doesn't quite work!
+    <>
+      <h1>Hedy Lamarr's Todos</h1>
+      <img
+        src="https://i.imgur.com/yXOvdOSs.jpg"
+        alt="Hedy Lamarr"
+        class="photo"
+      />
+      <ul>
+        <li>Invent new traffic lights</li>
+        <li>Rehearse a movie scene</li>
+        <li>Improve the spectrum technology</li>
+      </ul>
+    </>
   );
 }
 
 /* 
-  컴포넌트 export/import
+  JSX(JavaScript and XML)
+    - JavaScript 마크업 언어를 포함시키기 위한 확장된 문법.
+      => JS지만 HTML 구조를 한눈에 알아보기 쉽다.
+    - JSX는 React 개발을 도와주는 하나의 도구이다. 즉, React 별개이다.
+      => create-react-app를 통해 프로젝트를 생성하면 Babel이라는 도구가 포함된다.
 
-  - 루트 컴포넌트는 기본적으로 create-reate-app로 프로젝트를 만들면, App.js 루트 컴포넌트가 된다.
-      => index.js가 가장 먼저 실행되고, 가장 먼저 렌더링되는 컴포넌트가 App 컴포넌트다.
-      => 언제든 마음대로 변경할 수 있다. 
-  - export/import문을 통해서 컴포넌트를 별도의 파일로 관리할 수 있다.
-      => export default나 named export 둘다 상관없지만, 핵심이 되는 컴포넌트는 export default 권고.
-      => named export를 적절히 활용하면 하나의 파일에서 여러 컴포넌트를 내보낼 수 있다.
+  JSX 지켜야될 문법
+
+    1. 컴포넌트는 무조건 하나의 루트 요소를 반환해야한다.
+        => 불필요한 요소를 작성하기 싫다면, <></> 빈 태그를 사용하면 된다. 이를 Fragment라고 한다.
+
+    2. <img>와 같은 셀프 클로징 태그에는 /로 닫아주어야한다.
+        => ex) <img src=""> => <img src="" />
+    
+    3. JSX에서는 거의 대부분 카멜케이스를 사용한다.
+        => 작성한 속성(Attribute) 등이 결국에는 JS 객체로 변환되기 때문.
+        => 요소에 클래스를 부여할 때 class 대신 className을 사용한다.
 */
