@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 // src/components/TodoList.jsx
 const initialState = [
@@ -7,26 +7,27 @@ const initialState = [
   { id: 3, text: "상태 관리하기", done: false },
 ];
 
-let nextId = 4;
-
 export default function TodoList() {
   const [todos, setTodos] = useState(initialState);
 
   const [input, setInput] = useState("");
 
+  const inputRef = useRef(null);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTodos([...todos, { id: nextId++, text: input, done: false }]);
+    setTodos([...todos, { id: nextId.current++, text: input, done: false }]);
+    setInput("");
+    inputRef.current.focus();
   };
+
+  const nextId = useRef(4); // 렌더링과 별개로 React가 값을 기억해준다.
 
   const handleInput = (e) => {
     setInput(e.target.value);
   };
 
   const handleRemove = (id) => {
-    // filter를 통한 삭제 기능 구현
-    //  => filter는 새로운 배열을 반환한다. 업데이트에 써도 된다.
-    //  => "정말 삭제하시겠습니까?" => 확인 누르면 삭제
     if (window.confirm("정말 삭제하시겠습니까?"))
       setTodos(todos.filter((todo) => todo.id !== id));
   };
@@ -49,7 +50,7 @@ export default function TodoList() {
       {todo.text}
       <button
         onClick={(e) => {
-          e.stopPropagation(); // 이벤트 전파를 막는다.
+          e.stopPropagation();
           handleRemove(todo.id);
         }}
       >
@@ -61,7 +62,12 @@ export default function TodoList() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input type="text" onChange={handleInput} />
+        <input
+          type="text"
+          onChange={handleInput}
+          value={input}
+          ref={inputRef}
+        />
         <button>등록</button>
       </form>
       <ul>{itemList}</ul>
@@ -70,7 +76,11 @@ export default function TodoList() {
 }
 
 /* 
-  배열 상태 관리
-    - 배열도 객체기 때문에 새로운 배열을 만들어서 업데이트해주어야 한다.
-    - 삭제는 filter(), 수정 map(), 추가 스프레드, concat() 등이 있다.
+  useRef()
+    - 렌더링과 별개로 기억해야될 값을 저장해야할 수 있다.
+      => 일반적인 지역 변수는 함수가 끝나면 사라지기 때문에 다음 렌더링에서 기억할 수 없다.
+      => current 프로퍼티에 값이 저장된다. 이 값을 React가 기억해준다.
+    - 특정 요소를 선택할 수 있다.
+      => jsx의 ref 속성에 useRef로 만든 객체를 전달하면 된다.
+      => current 프로퍼티를 통해서 요소에 접근할 수 있다.
 */
