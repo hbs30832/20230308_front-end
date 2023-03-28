@@ -31,10 +31,30 @@ export default function TodoList() {
       setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  const handleToggle = (id) => {
+    console.log("실행");
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, done: !todo.done } : todo
+      )
+    );
+  };
+
   const itemList = todos.map((todo) => (
-    <li key={todo.id} style={{ textDecoration: todo.done && "line-through" }}>
+    <li
+      key={todo.id}
+      onClick={() => handleToggle(todo.id)}
+      style={{ textDecoration: todo.done && "line-through" }}
+    >
       {todo.text}
-      <button onClick={() => handleRemove(todo.id)}>삭제</button>
+      <button
+        onClick={(e) => {
+          e.stopPropagation(); // 이벤트 전파를 막는다.
+          handleRemove(todo.id);
+        }}
+      >
+        삭제
+      </button>
     </li>
   ));
 
@@ -48,3 +68,9 @@ export default function TodoList() {
     </div>
   );
 }
+
+/* 
+  배열 상태 관리
+    - 배열도 객체기 때문에 새로운 배열을 만들어서 업데이트해주어야 한다.
+    - 삭제는 filter(), 수정 map(), 추가 스프레드, concat() 등이 있다.
+*/
