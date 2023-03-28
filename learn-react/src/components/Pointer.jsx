@@ -10,7 +10,9 @@ export default function Pointer() {
 
   const handlePosition = (e) => {
     // console.log(position);
-    setPosition({ ...position, x: e.clientX, y: e.clientY });
+
+    const copy = { ...position };
+    copy.x = setPosition({ ...position, x: e.clientX, y: e.clientY });
   };
 
   return (
