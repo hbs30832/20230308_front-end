@@ -1,9 +1,9 @@
-import Counter from "./components/Counter";
+import Pointer from "./components/Pointer";
 
 export default function App() {
   return (
     <div>
-      <Counter />
+      <Pointer />
     </div>
   );
 }
