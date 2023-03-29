@@ -1,6 +1,12 @@
-export default function TodoHeader({ undoneCount }) {
+import React, { useEffect } from "react";
+
+function TodoHeader({ undoneCount }) {
   const dateStr = new Date().toLocaleDateString("ko-KR", {
     dateStyle: "full",
+  });
+
+  useEffect(() => {
+    console.log("Todo Header 렌더링!");
   });
 
   return (
@@ -10,3 +16,5 @@ export default function TodoHeader({ undoneCount }) {
     </div>
   );
 }
+
+export default React.memo(TodoHeader);

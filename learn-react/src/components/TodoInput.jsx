@@ -10,9 +10,6 @@ function TodoInput({ createTodo, onChange }) {
     inputRef.current.focus();
   };
 
-  useEffect(() => {
-    console.log("TodoInput Render");
-  });
   return (
     <div>
       <form onSubmit={handleSubmit}>
