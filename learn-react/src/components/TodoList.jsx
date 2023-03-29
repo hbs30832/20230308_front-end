@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-function TodoList({ todos, removeTodo, toggleTodo }) {
+function TodoList({ todos, dispatch }) {
   // 넘어온 todos 렌더링하기
 
   useEffect(() => {
@@ -8,12 +8,7 @@ function TodoList({ todos, removeTodo, toggleTodo }) {
   });
 
   const itemList = todos.map((todo) => (
-    <TodoItem
-      key={todo.id}
-      todo={todo}
-      toggleTodo={toggleTodo}
-      removeTodo={removeTodo}
-    />
+    <TodoItem key={todo.id} todo={todo} dispatch={dispatch} />
   ));
 
   return (
@@ -24,19 +19,19 @@ function TodoList({ todos, removeTodo, toggleTodo }) {
 }
 
 // 비구조화 할당 중첩 사용.
-function TodoItem({ todo: { text, done, id }, toggleTodo, removeTodo }) {
+function TodoItem({ todo: { text, done, id }, dispatch }) {
   return (
     <li
       style={{
         textDecoration: done && "line-through",
       }}
-      onClick={() => toggleTodo(id)}
+      onClick={() => dispatch({ type: "TOGGLE_TODO", id })}
     >
       {text}
       <button
         onClick={(e) => {
           e.stopPropagation();
-          removeTodo(id);
+          dispatch({ type: "REMOVE_TODO", id });
         }}
       >
         삭제
