@@ -1,8 +1,15 @@
-export default function TodoList({ todos }) {
+export default function TodoList({ todos, removeTodo, toggleTodo }) {
   console.log(todos);
   // 넘어온 todos 렌더링하기
 
-  const itemList = todos.map((todo) => <TodoItem key={todo.id} todo={todo} />);
+  const itemList = todos.map((todo) => (
+    <TodoItem
+      key={todo.id}
+      todo={todo}
+      toggleTodo={toggleTodo}
+      removeTodo={removeTodo}
+    />
+  ));
 
   return (
     <div>
