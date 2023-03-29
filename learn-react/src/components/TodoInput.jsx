@@ -1,7 +1,7 @@
-import { useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
 // src/components/TodoInput.jsx
-export default function TodoInput({ createTodo, onChange }) {
+function TodoInput({ createTodo, onChange }) {
   const inputRef = useRef(null);
 
   const handleSubmit = (e) => {
@@ -10,6 +10,9 @@ export default function TodoInput({ createTodo, onChange }) {
     inputRef.current.focus();
   };
 
+  useEffect(() => {
+    console.log("TodoInput Render");
+  });
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -19,3 +22,5 @@ export default function TodoInput({ createTodo, onChange }) {
     </div>
   );
 }
+
+export default React.memo(TodoInput);
