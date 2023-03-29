@@ -19,15 +19,23 @@ export default function TodoList({ todos, removeTodo, toggleTodo }) {
 }
 
 // 비구조화 할당 중첩 사용.
-function TodoItem({ todo: { text, done, id } }) {
+function TodoItem({ todo: { text, done, id }, toggleTodo, removeTodo }) {
   return (
     <li
       style={{
         textDecoration: done && "line-through",
       }}
+      onClick={() => toggleTodo(id)}
     >
       {text}
-      <button>삭제</button>
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          removeTodo(id);
+        }}
+      >
+        삭제
+      </button>
     </li>
   );
 }

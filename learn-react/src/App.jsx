@@ -22,7 +22,7 @@ export default function App() {
 
   const toggleTodo = (id) => {
     const newTodos = todos.map((todo) =>
-      todo.id === id ? { ...todos, done: !todo.done } : todo
+      todo.id === id ? { ...todo, done: !todo.done } : todo
     );
     setTodos(newTodos);
 
@@ -45,7 +45,7 @@ export default function App() {
 
   return (
     <div>
-      <TodoHeader />
+      <TodoHeader todos={todos} />
       <TodoInput createTodo={createTodo} />
       <TodoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} />
     </div>
