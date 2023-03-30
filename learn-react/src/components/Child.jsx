@@ -1,8 +1,13 @@
-import { useContext } from "react";
-import { CountContext } from "./GrandParent";
+import React, { useContext, useEffect } from "react";
+import { CountContext, HandleCountContext } from "./GrandParent";
 
 function Child() {
-  const { count, handleCount } = useContext(CountContext);
+  const count = useContext(CountContext);
+  const handleCount = useContext(HandleCountContext);
+
+  useEffect(() => {
+    console.log("render!");
+  });
   return (
     <div
       style={{
