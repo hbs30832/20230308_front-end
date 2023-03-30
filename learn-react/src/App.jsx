@@ -1,5 +1,5 @@
-import UserInfo from "./components/UserInfo";
+import GrandParent from "./components/GrandParent";
 
 export default function App() {
-  return <UserInfo />;
+  return <GrandParent />;
 }
