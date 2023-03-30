@@ -1,6 +1,6 @@
 import Child from "./Child";
 
-function Parent({ count, handleCount }) {
+function Parent() {
   return (
     <div
       style={{
@@ -8,8 +8,8 @@ function Parent({ count, handleCount }) {
       }}
     >
       <h2>Paren</h2>
-      <p>count : {count}</p>
-      <Child count={count} handleCount={handleCount} />
+      <p>count : </p>
+      <Child />
     </div>
   );
 }
