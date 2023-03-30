@@ -6,9 +6,17 @@ import { useState } from "react";
 
 export default function App() {
   const [modal, setModal] = useState(true);
+  const [disappear, setDisapper] = useState(false);
 
   const handleModal = (bool) => {
-    setModal(bool);
+    if (!disappear) {
+      setTimeout(() => {
+        setModal(bool);
+      }, 1000);
+    } else {
+      setModal(bool);
+    }
+    setDisapper(!bool);
   };
   return (
     <ThemeProvider
@@ -24,7 +32,9 @@ export default function App() {
         <Button color="blue">Button</Button>
         <BigButton onClick={() => handleModal(true)}>Big</BigButton>
       </Container>
-      {modal && <Modal handleModal={() => handleModal(false)} />}
+      {modal && (
+        <Modal handleModal={() => handleModal(false)} disappear={disappear} />
+      )}
     </ThemeProvider>
   );
 }
