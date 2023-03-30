@@ -3,6 +3,7 @@ import Parent from "./Parent";
 
 function GrandParent() {
   const [count, setCount] = useState(0);
+  const handleCount = () => setCount((c) => c + 1);
   return (
     <div
       style={{
@@ -11,8 +12,8 @@ function GrandParent() {
     >
       <h1>Grand Parent</h1>
       <p>count : {count}</p>
-      <button>+1</button>
-      <Parent />
+      <button onClick={handleCount}>+1</button>
+      <Parent count={count} handleCount={handleCount} />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-function Child() {
+function Child({ count, handleCount }) {
   return (
     <div
       style={{
@@ -6,6 +6,8 @@ function Child() {
       }}
     >
       <h3>Child</h3>
+      <p>count : {count}</p>
+      <button onClick={handleCount}>+1</button>
     </div>
   );
 }
