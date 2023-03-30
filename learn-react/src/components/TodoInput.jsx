@@ -1,9 +1,11 @@
 import React, { useRef, useState } from "react";
-
+import { useTodoDispatch } from "../state/todos";
 // src/components/TodoInput.jsx
-function TodoInput({ dispatch }) {
+function TodoInput() {
   const [text, setText] = useState("");
   const inputRef = useRef(null);
+
+  const dispatch = useTodoDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault(); // form의 기본 기능 실행 x.

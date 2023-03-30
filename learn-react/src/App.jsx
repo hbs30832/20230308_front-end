@@ -1,5 +1,11 @@
-import GrandParent from "./components/GrandParent";
+import Todos from "./components/Todos";
+import TodoProvider, { useTodoState } from "./state/todos";
 
 export default function App() {
-  return <GrandParent />;
+  console.log(useTodoState());
+  return (
+    <TodoProvider>
+      <Todos />
+    </TodoProvider>
+  );
 }

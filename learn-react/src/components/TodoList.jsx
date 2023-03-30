@@ -1,25 +1,28 @@
 import React, { useEffect } from "react";
+import { useTodoDispatch, useTodoState } from "../state/todos";
 
-function TodoList({ todos, dispatch }) {
+function TodoList() {
   // 넘어온 todos 렌더링하기
+
+  const todos = useTodoState();
 
   useEffect(() => {
     console.log("렌더링!");
   });
 
-  const itemList = todos.map((todo) => (
-    <TodoItem key={todo.id} todo={todo} dispatch={dispatch} />
-  ));
+  const itemList = todos.map((todo) => <TodoItem key={todo.id} todo={todo} />);
 
   return (
     <div>
-      <ul>{itemList}</ul>
+      <ul>{itemList}</ul>{" "}
     </div>
   );
 }
 
 // 비구조화 할당 중첩 사용.
-function TodoItem({ todo: { text, done, id }, dispatch }) {
+function TodoItem({ todo: { text, done, id } }) {
+  const dispatch = useTodoDispatch();
+
   return (
     <li
       style={{
