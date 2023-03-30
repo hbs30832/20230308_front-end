@@ -1,13 +1,13 @@
 import React, { useContext, useEffect } from "react";
-import { CountContext, HandleCountContext } from "./GrandParent";
+import { HandleCountContext } from "./GrandParent";
 
 function Child() {
-  const count = useContext(CountContext);
   const handleCount = useContext(HandleCountContext);
 
   useEffect(() => {
-    console.log("render!");
+    console.log("Child Component render!");
   });
+
   return (
     <div
       style={{
@@ -15,10 +15,9 @@ function Child() {
       }}
     >
       <h3>Child</h3>
-      <p>count : {count}</p>
       <button onClick={handleCount}>+1</button>
     </div>
   );
 }
 
-export default Child;
+export default React.memo(Child);
