@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import styled from "styled-components";
 
 function TodoHeader({ undoneCount }) {
   const dateStr = new Date().toLocaleDateString("ko-KR", {
@@ -10,11 +11,16 @@ function TodoHeader({ undoneCount }) {
   });
 
   return (
-    <div>
+    <Conatiner>
       <h2>{dateStr}</h2>
       <p>해야할 일 : {undoneCount}</p>
-    </div>
+    </Conatiner>
   );
 }
+
+const Conatiner = styled.div`
+  padding: 10px;
+  border-bottom: 1px solid black;
+`;
 
 export default React.memo(TodoHeader);

@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
 
-function Button({ color, children, onClick }) {
+function Button({ color, children, onClick, width }) {
   return (
-    <Container color={color} onClick={onClick}>
+    <Container color={color} onClick={onClick} width={width}>
       {children}
     </Container>
   );
@@ -13,6 +13,9 @@ const Container = styled.button`
   color: white;
   border: none;
   padding: 5px 10px;
+  width: ${({ width }) => width || "auto"};
+
+  cursor: pointer;
 
   ${(props) =>
     props.active &&
@@ -21,14 +24,14 @@ const Container = styled.button`
       font-weight: 700;
     `}
 
-  &:nth-child(n+2) {
+  & + & {
     margin-left: 20px;
   }
 
   &:hover {
     background-color: transparent;
     color: black;
-    border: 1px solid black;
+    outline: 1px solid black;
   }
 `;
 
