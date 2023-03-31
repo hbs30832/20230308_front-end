@@ -20,6 +20,8 @@ const Container = styled.div`
   width: 350px;
   height: 700px;
   border: 1px solid black;
+
+  overflow: hidden;
 `;
 
 export default Todos;

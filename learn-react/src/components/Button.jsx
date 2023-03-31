@@ -29,7 +29,7 @@ const Container = styled.button`
   }
 
   &:hover {
-    background-color: transparent;
+    background-color: white;
     color: black;
     outline: 1px solid black;
   }
