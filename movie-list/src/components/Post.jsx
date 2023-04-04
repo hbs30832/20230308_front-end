@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 function Post() {
   const [inputs, setInputs] = useState({
@@ -8,9 +8,11 @@ function Post() {
     body: "",
   });
 
-  const [searchParams] = useSearchParams();
+  const [searchParams] = useSearchParams(); // 쿼리스트링 값을 가진 객체를 반환한다.
 
-  const id = searchParams.get("postId");
+  const id = searchParams.get("postId"); // 쿼리스트링 중 postId 값을 가져온다.
+
+  const navigate = useNavigate(); // 경로를 바꾸는 navigate 객체를 반환한다.
 
   console.log(id);
 
@@ -21,8 +23,6 @@ function Post() {
       [name]: value,
     });
   };
-
-  const navigate = useNavigate();
 
   console.log(inputs);
 
@@ -41,7 +41,7 @@ function Post() {
       alert("게시물이 수정되었습니다.");
     }
 
-    navigate("/about/" + data.id);
+    navigate("/about/" + data.id); // 함수 내부에서 경로를 바꿀 수 있다.
   };
 
   useEffect(() => {

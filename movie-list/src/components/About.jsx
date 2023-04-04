@@ -1,5 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 
+// Outlet : 중첩 라우팅을 통해 렌더링 되는 요소가 넘어온다.
 function About() {
   return (
     <div>
