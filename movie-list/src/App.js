@@ -1,58 +1,67 @@
-import { useEffect, useState } from "react";
+import axios from "axios";
+import { useEffect, useReducer, useState } from "react";
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "LOADING":
+      return {
+        loading: true,
+        error: null,
+        data: null,
+      };
+    case "SUCCESS":
+      return {
+        loading: false,
+        erorr: null,
+        data: action.data,
+      };
+    case "ERROR": {
+      return {
+        loading: false,
+        data: null,
+        error: action.error,
+      };
+    }
+    default:
+      return state;
+  }
+}
 
 function App() {
-  const [profile, setProfile] = useState();
-  const [name, setName] = useState("");
+  const [state, dispatch] = useReducer(reducer, {
+    data: null,
+    loading: false,
+    error: null,
+  });
 
-  const handleSubmit = async () => {
-    // input 입력값 alert창 띄우기!
-
-    console.log(name);
-
-    try {
-      const res = await fetch("http://localhost:8000/profile", {
-        method: "put",
-        body: JSON.stringify({
-          name,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      const data = await res.json();
-      setProfile(data);
-    } catch (e) {
-      console.log(e.message);
-    }
-  };
+  const { data, loading, error } = state;
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        // Reqeust를 보낸다. 원래 Promise지만 await를 통해서 resolve 될 때까지 기다린다.
-        const res = await fetch("http://localhost:8000/profile");
-        // Response를 JS로 읽을 수 있게 변환한다. 원래 Promise.
-        const data = await res.json();
-        // 변환이 완료되면 set.
-        setProfile(data);
-      } catch (e) {
-        console.log(e);
-      }
-    }
+    dispatch({ action: "LOADING" });
 
-    fetchData();
+    axios
+      .get("http://localhost:8000/todos")
+      .then((res) => {
+        dispatch({ type: "SUCCESS", data: res.data });
+      })
+      .catch((e) => {
+        dispatch({ type: "ERROR", error: e });
+      });
   }, []);
 
-  if (!profile) return <div>로딩 중...</div>;
+  if (loading) return <div>로딩 중...</div>;
+
+  if (error) return <div>{error.message}</div>;
+
+  if (!data) return null;
 
   return (
     <div>
-      <h1>{profile.name}</h1>
-      <input type="text" onChange={(e) => setName(e.target.value)} />
-      <button onClick={handleSubmit} type="button">
-        이름 변경
-      </button>
+      <ul>
+        {data.map((todo) => (
+          <li key={todo.id}>{todo.text}</li>
+        ))}
+      </ul>
     </div>
   );
 }

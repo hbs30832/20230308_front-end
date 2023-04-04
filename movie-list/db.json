@@ -1,19 +1,7 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "ㅁㄴㅇㄴㅁㄴㅁㅇㅁㄴㅇㅁㄴㅇㄴㅁㅇ"
-  }
+  "todos": [
+    { "id": 1, "text": "api 통신 연습하기", "done": true },
+    { "id": 2, "text": "axios 설치하기", "done": true },
+    { "id": 3, "text": "todos api 연동하기", "done": true }
+  ]
 }
