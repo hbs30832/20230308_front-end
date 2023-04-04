@@ -1,22 +1,64 @@
 {
-  "todos": [
+  "posts": [
     {
-      "done": false,
-      "id": 1
+      "id": 1,
+      "title": "react-router-dom",
+      "body": "react-router-dom 어려워요~"
     },
     {
       "id": 2,
-      "text": "axios 설치하기",
-      "done": false
+      "title": "내일 휴무다",
+      "body": "내일 쉬는 날이니까 나오시면 안돼요~"
     },
     {
-      "text": "ㅁㄴㅇㅁㅇㄴㅁㅇ",
-      "done": true,
+      "title": "",
+      "body": "",
       "id": 3
     },
     {
-      "done": true,
+      "title": "ㅁㄴㅇㅁㅇ",
+      "body": "ㅁㄴㅇㅁㅇ",
       "id": 4
+    },
+    {
+      "title": "ㅁㄴㅇㅁㅇ",
+      "body": "ㅁㄴㅇㅁㅇ",
+      "id": 5
+    },
+    {
+      "title": "작성해볼까요?",
+      "body": "잘 이동하는지 테스트해볼게!요",
+      "id": 6
+    },
+    {
+      "title": "작성해볼까요?",
+      "body": "잘 이동\\asdad",
+      "id": 7
+    },
+    {
+      "title": "dasd",
+      "body": "t수정 테스트",
+      "id": 8
+    },
+    {
+      "title": "asdad",
+      "body": "sadasda",
+      "id": 9
+    },
+    {
+      "title": "ㄴㅁㅇㅁㅇ",
+      "body": "ㅁㄴㅇㄴㅁㅇㅁ",
+      "id": 10
+    },
+    {
+      "title": "ㅁㄴㅇㅁㄴㅇㅁㄴ",
+      "body": "수정이 잘 될까요?",
+      "id": 11
+    },
+    {
+      "title": "새로 작ㅈ성합니다",
+      "body": "작성되나요?",
+      "id": 12
     }
   ]
 }
