@@ -1,7 +1,22 @@
 {
   "todos": [
-    { "id": 1, "text": "api 통신 연습하기", "done": true },
-    { "id": 2, "text": "axios 설치하기", "done": true },
-    { "id": 3, "text": "todos api 연동하기", "done": true }
+    {
+      "done": false,
+      "id": 1
+    },
+    {
+      "id": 2,
+      "text": "axios 설치하기",
+      "done": false
+    },
+    {
+      "text": "ㅁㄴㅇㅁㅇㄴㅁㅇ",
+      "done": true,
+      "id": 3
+    },
+    {
+      "done": true,
+      "id": 4
+    }
   ]
 }
