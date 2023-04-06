@@ -1,6 +1,11 @@
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components";
 import MainContent from "./components/MainContent";
 import Sidebar from "./components/Sidebar";
+import { Route, Routes } from "react-router-dom";
+import Home from "./components/pages/Home";
+import Movie from "./components/pages/Movie";
+import TV from "./components/pages/TV";
+import Person from "./components/pages/Person";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -31,7 +36,14 @@ function App() {
       <GlobalStyle />
       <Container>
         <Sidebar />
-        <MainContent />
+        <MainContent>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/movie/*" element={<Movie />} />
+            <Route path="/tv/*" element={<TV />} />
+            <Route path="/person/*" element={<Person />} />
+          </Routes>
+        </MainContent>
       </Container>
     </ThemeProvider>
   );
