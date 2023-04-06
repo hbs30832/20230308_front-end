@@ -1,7 +1,11 @@
+import ContentList from "../home/ContentList";
+import SearchBox from "../home/SearchBox";
+
 function Home() {
   return (
     <div>
-      <h1>Home</h1>
+      <SearchBox />
+      <ContentList />
     </div>
   );
 }

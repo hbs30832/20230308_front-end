@@ -1,12 +1,22 @@
 import styled from "styled-components";
 
 function MainContent({ children }) {
-  return <Container>{children}</Container>;
+  return (
+    <Container>
+      <Wrapper>{children}</Wrapper>
+    </Container>
+  );
 }
 
 const Container = styled.div`
   background-color: #eee;
-  padding: 50px 20px 0;
+  padding-top: 50px;
+`;
+
+const Wrapper = styled.div`
+  max-width: 900px;
+  padding: 0 20px;
+  margin: 0 auto;
 `;
 
 export default MainContent;
