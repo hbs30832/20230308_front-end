@@ -1,11 +1,16 @@
 import styled from "styled-components";
 import Button from "../common/button";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function SearchBox() {
+  const [query, setQuery] = useState("");
   return (
     <Container>
-      <input type="text" />
-      <Button>검색</Button>
+      <input type="text" onChange={(e) => setQuery(e.target.value)} />
+      <Button>
+        <Link to={"/search?query=" + query}>검색</Link>
+      </Button>
     </Container>
   );
 }

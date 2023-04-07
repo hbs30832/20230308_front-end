@@ -6,6 +6,8 @@ import Home from "./components/pages/Home";
 import Movie from "./components/pages/Movie";
 import TV from "./components/pages/TV";
 import Person from "./components/pages/Person";
+import DetailPage from "./components/common/DetailPage";
+import Search from "./components/pages/Search";
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -39,9 +41,15 @@ function App() {
         <MainContent>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/movie/*" element={<Movie />} />
-            <Route path="/tv/*" element={<TV />} />
+            <Route path="/movie" element={<Movie />}>
+              <Route path=":id" element={<DetailPage />} />
+              <Route path="popular" element={<div>인기</div>} />
+            </Route>
+            <Route path="/tv" element={<TV />}>
+              <Route path=":id" element={<DetailPage />} />
+            </Route>
             <Route path="/person/*" element={<Person />} />
+            <Route path="/search" element={<Search />} />
           </Routes>
         </MainContent>
       </Container>
