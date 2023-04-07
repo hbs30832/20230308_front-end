@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import SideItem from "./SideItem";
+import { Link } from "react-router-dom";
 
 const menuList = [
   {
@@ -34,7 +35,9 @@ const menuList = [
 function Sidebar() {
   return (
     <Container>
-      <Logo>Nepp Movie</Logo>
+      <Logo>
+        <Link to="/">Nepp Movie</Link>
+      </Logo>
       <SideList>
         {menuList.map((menu) => (
           <SideItem key={menu.id} menu={menu} />

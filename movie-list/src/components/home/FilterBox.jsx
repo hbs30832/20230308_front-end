@@ -1,13 +1,19 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-function FilterBox() {
+function FilterBox({ filterList, title, onClick }) {
   return (
     <Container>
-      <h3>트렌딩</h3>
+      <h3>{title}</h3>
       <FilterList>
-        <FilterItem>필터1</FilterItem>
-        <FilterItem>필터2</FilterItem>
-        <FilterItem>필터3</FilterItem>
+        {filterList.map((filter) => (
+          <FilterItem
+            key={filter.id}
+            active={filter.active}
+            onClick={() => onClick(filter.id)}
+          >
+            {filter.text}
+          </FilterItem>
+        ))}
       </FilterList>
     </Container>
   );
@@ -24,15 +30,24 @@ const FilterList = styled.ul`
   border-radius: 10px;
   overflow: hidden;
 
-  border: 1px solid black;
+  border: 1px solid #bbb;
   margin-left: 20px;
 `;
 
 const FilterItem = styled.li`
   padding: 5px 10px;
+  cursor: pointer;
+
+  ${({ active, theme }) =>
+    active &&
+    css`
+      background-color: ${theme.colors.main};
+      color: #fff;
+      font-weight: bold;
+    `}
 
   & + & {
-    border-left: 1px solid black;
+    border-left: 1px solid #bbb;
   }
 `;
 
