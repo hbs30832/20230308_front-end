@@ -10,13 +10,20 @@ function Poster({ data }) {
     name,
     first_air_date,
     media_type,
+    profile_path,
   } = data;
 
-  const src = "https://image.tmdb.org/t/p/w154/" + poster_path;
+  console.log(data);
+
+  const src =
+    "https://image.tmdb.org/t/p/w154/" + (poster_path ?? profile_path);
+
+  // release_date가 있으면 movie, first_air_date 가 있으면 tv,  둘다 없으면 person => 삼항연산자 중첩
+  const to = release_date ? "movie" : first_air_date ? "tv" : "person";
 
   return (
     <Container>
-      <Link to={`/${media_type}/${id}`}>
+      <Link to={`/${to}/${id}`}>
         <ImgBox>
           <img src={src} alt="" />
         </ImgBox>

@@ -3,7 +3,13 @@ import { useSearchParams } from "react-router-dom";
 import { tmdbAxios } from "../../api/tmdbAxios";
 import Poster from "../common/Poster";
 import styled from "styled-components";
-import qs from "qs";
+import SearchFilter from "../search/SearchFilter";
+
+const initialFilter = [
+  { id: 1, text: "영화", active: true, type: "movie" },
+  { id: 2, text: "TV 프로그램", active: false, type: "tv" },
+  { id: 3, text: "인물", active: false, type: "person" },
+];
 
 function Search() {
   // 쿼리스트링으로 넘어온 keyword 값 꺼내기
@@ -13,9 +19,26 @@ function Search() {
 
   const [results, setResults] = useState(null);
 
+  const [filterList, setFilterList] = useState(initialFilter);
+
+  const handleFilter = (id) => {
+    setFilterList(
+      filterList.map((filter) =>
+        filter.id === id
+          ? { ...filter, active: true }
+          : { ...filter, active: false }
+      )
+    );
+  };
+
+  useEffect(() => {
+    setFilterList(initialFilter);
+  }, [query]);
+
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await tmdbAxios.get("search/movie", {
+      const { type } = filterList.find((filter) => filter.active);
+      const { data } = await tmdbAxios.get(`search/${type}`, {
         params: {
           query,
         },
@@ -25,14 +48,13 @@ function Search() {
     };
 
     fetchData();
-  }, [query]);
-
-  console.log(results);
+  }, [query, filterList]);
 
   if (!results) return <div>로딩 중...</div>;
 
   return (
     <div>
+      <SearchFilter filterList={filterList} handleFilter={handleFilter} />
       <PostList>
         {results.map((item) => (
           <li key={item.id}>

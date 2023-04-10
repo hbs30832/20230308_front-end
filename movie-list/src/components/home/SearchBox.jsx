@@ -1,22 +1,39 @@
 import styled from "styled-components";
 import Button from "../common/button";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 function SearchBox() {
   const [query, setQuery] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    navigate("/search?query=" + query);
+
+    // setQuery("");
+  };
+
   return (
     <Container>
-      <input type="text" onChange={(e) => setQuery(e.target.value)} />
-      <Button>
-        <Link to={"/search?query=" + query}>검색</Link>
-      </Button>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          onChange={(e) => setQuery(e.target.value)}
+          value={query}
+        />
+        <Button>검색</Button>
+      </form>
     </Container>
   );
 }
 
 const Container = styled.div`
-  display: flex;
+  form {
+    display: flex;
+  }
 
   input {
     flex: 1;

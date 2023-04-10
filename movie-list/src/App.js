@@ -8,6 +8,7 @@ import TV from "./components/pages/TV";
 import Person from "./components/pages/Person";
 import DetailPage from "./components/common/DetailPage";
 import Search from "./components/pages/Search";
+import SearchBox from "./components/home/SearchBox";
 
 const GlobalStyle = createGlobalStyle`
   * {

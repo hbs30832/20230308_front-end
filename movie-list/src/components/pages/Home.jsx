@@ -1,5 +1,4 @@
 import ContentList from "../home/ContentList";
-import SearchBox from "../home/SearchBox";
 
 const filters = {
   trending: [
@@ -11,7 +10,6 @@ const filters = {
 function Home() {
   return (
     <div>
-      <SearchBox />
       <ContentList title="트렌딩" filterList={filters.trending} />
     </div>
   );

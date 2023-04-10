@@ -1,9 +1,13 @@
 import styled from "styled-components";
+import SearchBox from "./home/SearchBox";
 
 function MainContent({ children }) {
   return (
     <Container>
-      <Wrapper>{children}</Wrapper>
+      <Wrapper>
+        <SearchBox />
+        {children}
+      </Wrapper>
     </Container>
   );
 }
