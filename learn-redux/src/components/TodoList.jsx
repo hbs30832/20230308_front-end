@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { removeTodo } from "../redux/todos";
+import { removeTodo, toggleTodo } from "../redux/todos";
 
 function TodoList() {
   const todos = useSelector(({ todos }) => todos);
@@ -8,7 +8,13 @@ function TodoList() {
     <div>
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id}>
+          <li
+            key={todo.id}
+            style={{
+              textDecoration: todo.done && "line-through",
+            }}
+            onClick={() => dispatch(toggleTodo(todo.id))}
+          >
             {todo.text}
             <button onClick={() => dispatch(removeTodo(todo.id))}>삭제</button>
           </li>
