@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { removeTodo, toggleTodo } from "../redux/todos";
+import { useEffect } from "react";
 
 function TodoList() {
   const todos = useSelector(({ todos }) => todos);
   const dispatch = useDispatch();
+
   return (
     <div>
       <ul>
@@ -16,7 +18,14 @@ function TodoList() {
             onClick={() => dispatch(toggleTodo(todo.id))}
           >
             {todo.text}
-            <button onClick={() => dispatch(removeTodo(todo.id))}>삭제</button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                dispatch(removeTodo(todo.id));
+              }}
+            >
+              삭제
+            </button>
           </li>
         ))}
       </ul>
