@@ -8,13 +8,11 @@ import { createStore } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import counter from "./redux/counter";
 import todosReducer from "./redux/todos";
-import moviesReducer from "./redux/movies";
 
 const store = configureStore({
   reducer: {
     counter,
     todos: todosReducer,
-    movies: moviesReducer,
   },
 });
 
