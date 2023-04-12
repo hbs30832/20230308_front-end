@@ -1,13 +1,7 @@
-import Counter from "./components/Counter";
-import Movies from "./components/Movies";
-import Todos from "./components/Todos";
+import TopRated from "./components/TopRated";
 
 function App() {
-  return (
-    <div>
-      <Movies />
-    </div>
-  );
+  return <TopRated />;
 }
 
 export default App;

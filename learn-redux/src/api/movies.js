@@ -25,7 +25,10 @@ export const movieApi = createApi({
   }),
   endpoints: (builder) => ({
     getMovies: builder.query({
-      query: "/popular",
+      query: (page) => `/popular?page=${page}`,
+      transformResponse: (res) => res.results,
     }),
   }),
 });
+
+export const { useGetMoviesQuery } = movieApi;

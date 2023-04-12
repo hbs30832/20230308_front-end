@@ -1,16 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMovies } from "../redux/movies";
+import { useGetMoviesQuery } from "../api/movies";
 
 function Movies() {
-  const { data, isLoading } = useSelector((state) => state.movies);
   const [page, setPage] = useState(1);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchMovies(page));
-  }, [dispatch, page]);
+  const { data, error, isLoading } = useGetMoviesQuery(page);
 
   return (
     <div>
