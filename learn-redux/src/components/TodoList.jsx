@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { removeTodo, toggleTodo } from "../redux/todos";
-import { useEffect } from "react";
 
 function TodoList() {
   const todos = useSelector(({ todos }) => todos);

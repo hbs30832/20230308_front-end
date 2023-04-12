@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+
 import { configureStore } from "@reduxjs/toolkit";
 import counter from "./redux/counter";
 import todosReducer from "./redux/todos";
