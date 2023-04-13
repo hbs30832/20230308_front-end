@@ -1,19 +1,47 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useInputs } from "../../hooks/useInputs";
+import { login } from "../../api/auth";
 
 function LoginForm() {
+  const [inputs, handleInputs] = useInputs({
+    email: "",
+    password: "",
+  });
   const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await login(inputs);
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
+  };
   return (
     <div>
       <Title>Login</Title>
-      <form>
+      <form onSubmit={handleSubmit}>
         <InputWrapper>
-          <input type="text" placeholder="이메일" />
-          <input type="password" placeholder="비밀번호" />
+          <input
+            type="text"
+            placeholder="이메일"
+            onChange={handleInputs}
+            name="email"
+          />
+          <input
+            type="password"
+            placeholder="비밀번호"
+            onChange={handleInputs}
+            name="password"
+          />
         </InputWrapper>
         <BtnWrapper>
           <button>로그인</button>
-          <button onClick={() => navigate("/auth/signup")}>회원가입</button>
+          <button type="button" onClick={() => navigate("/auth/signup")}>
+            회원가입
+          </button>
         </BtnWrapper>
       </form>
     </div>

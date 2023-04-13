@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useInputs } from "../../hooks/useInputs";
-import { login } from "../../api/auth";
+import { signup } from "../../api/auth";
 
 function SignupForm() {
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ function SignupForm() {
     }
 
     try {
-      const status = await login(name, email, password);
+      const status = await signup(name, email, password);
 
       if (status === 201) {
         alert("회원가입에 성공했습니다");
@@ -74,7 +74,9 @@ function SignupForm() {
         </InputWrapper>
         <BtnWrapper>
           <button>회원가입</button>
-          <button onClick={() => navigate("/auth/login")}>취소</button>
+          <button type="button" onClick={() => navigate("/auth/login")}>
+            취소
+          </button>
         </BtnWrapper>
       </form>
     </div>
