@@ -9,6 +9,7 @@ function Profile() {
   const mutation = useMutation({
     mutationFn: updateProfile,
     onSuccess: () => {
+      // 해당 키값을 사용하는 모든 컴포넌트에서 상태가 stale하다고 판단되면 refetch
       queryClient.invalidateQueries("/users/current");
     },
   });
@@ -16,6 +17,8 @@ function Profile() {
   const handleProfile = (e) => {
     mutation.mutate(e.target.files[0]);
   };
+
+  console.log(isLoading);
 
   if (isLoading) return;
   return (

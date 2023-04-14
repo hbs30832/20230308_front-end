@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useInputs } from "../../hooks/useInputs";
 import { login } from "../../api/auth";
+import { useSetRecoilState } from "recoil";
+import { tokenState } from "../../state/auth";
 
 function LoginForm() {
   const [inputs, handleInputs] = useInputs({
@@ -9,6 +11,7 @@ function LoginForm() {
     password: "",
   });
   const navigate = useNavigate();
+  const setToken = useSetRecoilState(tokenState);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -16,6 +19,7 @@ function LoginForm() {
       const token = await login(inputs);
 
       if (token) {
+        setToken(token);
         navigate("/");
       }
     } catch (e) {

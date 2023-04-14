@@ -6,6 +6,7 @@ import Home from "./components/pages/Home";
 import Post from "./components/pages/Post";
 import Profile from "./components/pages/Profile";
 import Public from "./components/pages/Public";
+import PostList from "./components/post/PostList";
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
         </Route>
         <Route path="/" element={<Public />}>
           <Route path="/" element={<Home />} />
-          <Route path="/posts" element={<Post />} />
+          <Route path="/posts" element={<Post />}>
+            <Route path="" element={<PostList />} />
+          </Route>
           <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
