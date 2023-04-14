@@ -13,8 +13,11 @@ function LoginForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await login(inputs);
-      console.log(res);
+      const token = await login(inputs);
+
+      if (token) {
+        navigate("/");
+      }
     } catch (e) {
       console.log(e);
     }
