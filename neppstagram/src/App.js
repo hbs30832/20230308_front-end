@@ -7,6 +7,7 @@ import Post from "./components/pages/Post";
 import Profile from "./components/pages/Profile";
 import Public from "./components/pages/Public";
 import PostList from "./components/post/PostList";
+import PostDetail from "./components/post/PostDetail";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/posts" element={<Post />}>
             <Route path="" element={<PostList />} />
+            <Route path=":id" element={<PostDetail />} />
           </Route>
           <Route path="/profile" element={<Profile />} />
         </Route>

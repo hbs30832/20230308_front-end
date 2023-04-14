@@ -4,6 +4,7 @@ import { useQuery } from "react-query";
 import { getPosts } from "../../api/posts";
 import styled from "styled-components";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function PostList() {
   const [page, setPage] = useState(1);
@@ -14,6 +15,7 @@ function PostList() {
     cacheTime: 5000,
     staleTime: 2000,
   });
+  console.log(data);
 
   if (isLoading) return;
 
@@ -26,10 +28,11 @@ function PostList() {
       <ul>
         {data.map((post) => (
           <li>
-            <ImageBox>
-              <img src={post.img_list[0].url} alt="" />
-            </ImageBox>
-            <p>{post.body}</p>
+            <Link to={`/posts/${post.id}`}>
+              <ImageBox>
+                <img src={post.img_list[0].url} alt="" />
+              </ImageBox>
+            </Link>
           </li>
         ))}
       </ul>
