@@ -1,10 +1,13 @@
 import { getCurrentUser, updateProfile } from "../../api/users";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import styled from "styled-components";
+import { useSetRecoilState } from "recoil";
+import { tokenState } from "../../state/auth";
 
 function Profile() {
   const { data, isLoading } = useQuery("/users/current", getCurrentUser);
   const queryClient = useQueryClient();
+  const setToken = useSetRecoilState(tokenState);
 
   const mutation = useMutation({
     mutationFn: updateProfile,
@@ -18,7 +21,10 @@ function Profile() {
     mutation.mutate(e.target.files[0]);
   };
 
-  console.log(isLoading);
+  const handleLogout = () => {
+    localStorage.removeItem("access-token");
+    setToken(null);
+  };
 
   if (isLoading) return;
   return (
@@ -34,6 +40,8 @@ function Profile() {
       </label>
 
       <h3>{data.name}</h3>
+
+      <button onClick={handleLogout}>로그아웃</button>
     </Container>
   );
 }

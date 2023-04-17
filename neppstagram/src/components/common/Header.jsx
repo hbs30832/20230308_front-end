@@ -1,23 +1,35 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+import { AiOutlineHome, AiOutlinePicture, AiOutlineUser } from "react-icons/ai";
+import SearchBar from "./SearchBar";
+
 function Header() {
   return (
     <Cotainer>
-      <h1>
-        <Link to="/">Neppstagram</Link>
-      </h1>
-      <NavList>
-        <NavItem>
-          <Link to="/">Home</Link>
-        </NavItem>
-        <NavItem>
-          <Link to="/posts">Post</Link>
-        </NavItem>
-        <NavItem>
-          <Link to="/profile">Profile</Link>
-        </NavItem>
-      </NavList>
+      <Wrapper>
+        <h1>
+          <Link to="/">Neppstagram</Link>
+        </h1>
+        <SearchBar />
+        <NavList>
+          <NavItem>
+            <Link to="/">
+              <AiOutlineHome size={20} color="#777" />
+            </Link>
+          </NavItem>
+          <NavItem>
+            <Link to="/posts">
+              <AiOutlinePicture size={20} color="#777" />
+            </Link>
+          </NavItem>
+          <NavItem>
+            <Link to="/profile">
+              <AiOutlineUser size={20} color="#777" />
+            </Link>
+          </NavItem>
+        </NavList>
+      </Wrapper>
     </Cotainer>
   );
 }
@@ -25,12 +37,14 @@ function Header() {
 const Cotainer = styled.header`
   padding: 15px 0;
   border-bottom: 1px solid #ccc;
+`;
 
-  h1 {
-    position: absolute;
-    top: 0;
-    left: 20px;
-  }
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
 `;
 
 const NavList = styled.ul`

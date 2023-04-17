@@ -1,14 +1,28 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import Header from "../common/Header";
 import styled from "styled-components";
 import { tokenState } from "../../state/auth";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { useQuery } from "react-query";
+import { getCurrentUser } from "../../api/users";
 
 function Public() {
-  const token = useRecoilValue(tokenState);
+  const [token, setToken] = useRecoilState(tokenState);
 
-  if (!token)
-    return <Navigate to="/auth/login" {...alert("로그인이 필요합니다")} />;
+  const navigate = useNavigate();
+
+  useQuery("users/current", getCurrentUser, {
+    onError: (error) => {
+      if (error?.response?.status === 401) {
+        setToken(null);
+        localStorage.removeItem("access-token");
+        alert("로그인이 만료되었습니다.");
+        navigate("/auth/login");
+      }
+    },
+  });
+
+  if (!token) return <Navigate to="/auth/login" />;
 
   return (
     <Container>

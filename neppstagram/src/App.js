@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Auth from "./components/pages/Auth";
 import LoginForm from "./components/auth/LoginForm";
 import SignupForm from "./components/auth/SignupForm";
@@ -8,6 +8,9 @@ import Profile from "./components/pages/Profile";
 import Public from "./components/pages/Public";
 import PostList from "./components/post/PostList";
 import PostDetail from "./components/post/PostDetail";
+import { useQuery } from "react-query";
+import { getCurrentUser } from "./api/users";
+import EditPost from "./components/post/EditPost";
 
 function App() {
   return (
@@ -22,6 +25,7 @@ function App() {
           <Route path="/posts" element={<Post />}>
             <Route path="" element={<PostList />} />
             <Route path=":id" element={<PostDetail />} />
+            <Route path="edit" element={<EditPost />} />
           </Route>
           <Route path="/profile" element={<Profile />} />
         </Route>

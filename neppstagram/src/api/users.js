@@ -1,13 +1,9 @@
 import { axiosInstance } from ".";
 
 export const getCurrentUser = async () => {
-  try {
-    const { data } = await axiosInstance.get("users/current");
+  const { data } = await axiosInstance.get("users/current");
 
-    return data;
-  } catch (e) {
-    console.log(e);
-  }
+  return data;
 };
 
 export const updateProfile = async (file) => {
@@ -17,6 +13,18 @@ export const updateProfile = async (file) => {
   form.append("profile", file);
 
   const { data } = await axiosInstance.patch("users/profile", form);
+
+  return data;
+};
+
+export const searchUser = async (name, page = 1) => {
+  if (name === "") return [];
+  const { data } = await axiosInstance.get("/users/search", {
+    params: {
+      name,
+      page,
+    },
+  });
 
   return data;
 };
