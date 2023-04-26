@@ -62,3 +62,16 @@ function getProductResponse(res: ProductReponse) {
 function getOrderResponse(res: OrderResponse) {
   return res.orders;
 }
+
+type Key = "name" | "age" | "weight";
+type Player = {
+  [key in Key]: string | number;
+};
+
+const player: Player = {
+  age: 10,
+  name: "asd",
+  weight: 60,
+};
+
+console.log(player);
