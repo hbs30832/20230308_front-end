@@ -14,6 +14,7 @@ function add(a: number, b?: number, c?: number): number {
 
 add(1, 2);
 // 함수 오버로딩 : 같은 이름의 함수더라도 매개변수의 종류나 개수에 따라 다른 동작을 한다.
+
 function addValue(str: string, num: number): string;
 function addValue(num01: number, num02: number): number;
 
